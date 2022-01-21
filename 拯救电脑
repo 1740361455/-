@@ -6,7 +6,7 @@ int main()
 	char a[100];
 	system("shutdown -s -t 360");
 	again:
-	printf("请输入我是笨比，否则你的电脑将在360s后关机"); 
+	printf("请输入我是笨比，否则你的电脑将在360s后关机\n"); 
 	scanf("%s",a);
 	if(strcmp(a,"我是笨比")==0)
 	{

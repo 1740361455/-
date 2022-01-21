@@ -1,0 +1,11 @@
+#include <stdio.h> 
+int main()
+{
+	int arr[10]={5,7,4,6,9,7,-1,-5,-9,1},max=arr[0],i;
+	for(i=0;i<10;i++)
+	{
+		max=(max>arr[i]?max:arr[i]);
+	}
+	printf("%d",max);
+	return 0;
+}

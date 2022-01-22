@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	double x;
+	int y;
+	scanf("%lf",&x);
+	y=pow(x,2.0)*2+x+8;
+	printf("%d",y);
+	return 0;
+ } 

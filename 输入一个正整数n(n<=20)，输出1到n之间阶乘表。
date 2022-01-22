@@ -1,0 +1,15 @@
+#include<stdio.h>
+int main()
+{
+   long long n,i,j,sum=1;
+   scanf("%d",&n);
+   for(i=1;i<=n;i++)
+   {
+   	for(j=1;j<=i;j++)
+   	sum*=j;
+	printf("%-4lld%-20lld\n",i,sum);
+	sum=1;
+   }
+
+   return 0;
+}

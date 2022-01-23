@@ -1,0 +1,10 @@
+#include<stdio.h>
+int main()
+{
+    int a,b,c,d,e,f,g;
+    scanf("%d:%d:%d\n",&a,&b,&c);
+    scanf("%d:%d:%d\n",&d,&e,&f);
+    g=(d-a)*3600+(e-b)*60+f-c;
+    printf("%d",g);
+    return 0;
+}

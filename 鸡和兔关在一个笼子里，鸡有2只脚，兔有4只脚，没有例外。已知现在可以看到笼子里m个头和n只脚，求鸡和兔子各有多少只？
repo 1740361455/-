@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main(){
+	int heads,feet,a,b;
+	scanf("%d%d",&heads,&feet);
+	a=(feet-(heads*2))/2;
+	b=heads-a;
+	printf("%d %d",b,a);
+	return 0;
+ } 

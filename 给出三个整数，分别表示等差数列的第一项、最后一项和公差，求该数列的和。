@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main(){
+	int a,b,c,d,sum;
+	scanf("%d%d%d",&a,&b,&c);
+	d=(b-a)/c+1;
+	sum=(a+b)*d/2;
+	printf("%d\n",sum);
+	return 0;
+ } 

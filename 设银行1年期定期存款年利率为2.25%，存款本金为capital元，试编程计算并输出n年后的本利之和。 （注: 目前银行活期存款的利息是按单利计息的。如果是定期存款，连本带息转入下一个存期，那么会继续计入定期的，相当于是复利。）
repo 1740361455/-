@@ -1,0 +1,11 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int n;
+    double deposit,a;
+    scanf("%d%lf",&n,&deposit);
+    a=pow(1.0225,n)*deposit;
+    printf("%.6lf",a);
+    return 0;
+}

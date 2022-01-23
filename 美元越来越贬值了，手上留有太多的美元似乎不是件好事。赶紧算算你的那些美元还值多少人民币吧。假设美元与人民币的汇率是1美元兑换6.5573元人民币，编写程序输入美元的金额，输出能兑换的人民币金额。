@@ -1,0 +1,8 @@
+#include <stdio.h>
+int main(){
+	double a,b;
+	scanf("%lf",&a);
+	b=a*6.5573;
+	printf("%.2lf",b);
+	return 0;
+ } 

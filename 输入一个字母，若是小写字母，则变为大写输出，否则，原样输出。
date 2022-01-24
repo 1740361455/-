@@ -1,0 +1,13 @@
+#include<stdio.h>
+int main()
+{
+	char a=getchar();
+	if(a<=90)
+	putchar(a);
+	else
+	{
+		a-=32;
+		putchar(a);
+	}
+    return 0;
+ }

@@ -1,0 +1,19 @@
+#include<stdio.h>
+enum a{
+	dasd,dasds,fasfsaf
+};
+int main()
+{
+	int a,A;
+	char password[10];
+	printf("请输入密码");
+	scanf("%s",password);
+	printf("请确认(Y/N):");
+	while((A=getchar())!='\n');
+	a=getchar();
+	if(a=='Y')
+	printf("成功");
+	else 
+	printf("失败");
+    return 0;
+ }

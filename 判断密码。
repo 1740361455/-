@@ -1,7 +1,4 @@
 #include<stdio.h>
-enum a{
-	dasd,dasds,fasfsaf
-};
 int main()
 {
 	int a,A;

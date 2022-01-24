@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main()
+{
+    int a,b;
+    scanf("%d",&a);
+    if(a<30) 
+	b=a*50;
+    else 
+	b=a*48;
+    printf("%d",b);
+    return 0;
+ }

@@ -1,0 +1,17 @@
+#include<stdio.h>
+int main()
+{
+	char a=getchar();
+	int n;
+	if(a<=90){
+	n=a-64;
+	printf("%d",n);
+	}
+
+	else
+	{
+	n=a-96;
+	printf("%d",n);
+	}
+    return 0;
+ }

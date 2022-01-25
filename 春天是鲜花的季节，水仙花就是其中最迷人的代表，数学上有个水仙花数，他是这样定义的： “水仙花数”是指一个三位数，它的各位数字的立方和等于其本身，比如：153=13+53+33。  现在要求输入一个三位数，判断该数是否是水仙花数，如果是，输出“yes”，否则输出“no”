@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+	int a,b,c,d,e;
+	scanf("%d",&a);
+	b=a%10;
+	b=pow(b,3);
+	c=a/100;
+	c=pow(c,3);
+	d=(a-a/100*100)/10;
+	d=pow(d,3);
+	e=b+c+d;
+	if(a==e)
+	printf("yes");
+	else
+	printf("no");
+	return 0;
+}

@@ -1,0 +1,16 @@
+#include<stdio.h>
+int main() {
+	float a;
+	scanf("%f",&a);
+	if(a<500);
+	else if(a<1000)
+	a*=0.95;
+	else if(a<3000)
+	a*=0.9;
+	else if(a<5000)
+	a*=0.85;
+	else
+	a*=0.8;
+	printf("%.2f",a);
+	return 0;
+}

@@ -1,0 +1,16 @@
+#include <stdio.h> 
+int main()
+{
+	int i;
+	float a,b,n,m;
+	scanf("%f\n",&n);
+	for(i=1;i<=n;i++)
+	{
+		scanf("%f",&a);
+		if(a<60)
+		m++;
+	}
+	b=m/n;
+	printf("%.2f",b);
+	return 0;
+}

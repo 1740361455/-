@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	float sin=0.0,i,x,j,sum,a=-1.0;
+	scanf("%f",&x);
+	for(i=1;i<=10;i++)
+	{
+		sum=1;
+		a=-a;
+		for(j=1;j<=(2*i-1);j++)
+		sum*=j;
+		sin+=pow(x,2*i-1)*a/sum;
+	}
+	printf("%.3f",sin);
+	return 0;
+ } 

@@ -1,0 +1,22 @@
+#include<stdio.h>
+int main()
+{
+    char m;
+    int n,c,i,b;
+    long a;
+    scanf("%d",&n);
+    c=1;
+    while(a<n)
+    {
+        a=0;
+        b=1;
+        for(i=1;i<=c;i++)
+        {
+            b=b*i;
+            a=a+b;
+        }
+        c=c+1;
+    }
+    printf("m<=%d",c-2);
+    return 0;
+}

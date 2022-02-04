@@ -1,0 +1,26 @@
+#include <stdio.h>
+int main() 
+{
+	int n,m,h=1,num,e;
+	scanf("%d",&n);
+	m=n;
+	e=n;
+	while(n!=0)
+	{
+		h*=10;
+		n/=10;
+	}
+	h/=10;
+	while(m!=0)
+	{
+		num=m/h;
+		m%=h;
+		h/=10;
+		printf("%d ",num);
+	}
+	while(e%10==0)
+	{
+		printf("0 ");
+		e/=10;
+	}
+}

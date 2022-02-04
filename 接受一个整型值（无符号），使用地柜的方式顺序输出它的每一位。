@@ -1,0 +1,13 @@
+#include <stdio.h>
+void printf1(int a)
+{
+	if(a>9)
+	printf1(a/10);
+	printf("%d ",a%10);
+}
+int main() {
+	unsigned int n;
+	scanf("%d",&n);
+	printf1(n);
+	return 0;
+}

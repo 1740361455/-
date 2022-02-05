@@ -1,0 +1,16 @@
+#include <stdio.h>
+int a(int n)
+{
+	if(n==1)
+	return 1;
+	else
+	return n*a(n-1);
+}
+int main()
+{
+	int sum,n;
+	scanf("%d",&n);
+	sum=a(n);
+	printf("%d",sum);
+	return 0; 
+ } 

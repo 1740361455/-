@@ -1,0 +1,27 @@
+#include <stdio.h>
+int main()
+{
+	char string;
+	while(1)
+	{
+	scanf("%c",&string);
+	if(string=='@')
+	break;
+	if(string>=65&&string<=90)
+	{
+	string+=32;	
+	if(string=='z')
+	string='a';
+	else
+	string++;
+	}
+	else if(string>=97&&string<=121)
+	string++;
+	else if(string=='z')
+	string='a';
+	else
+	;
+	printf("%c",string);
+	}
+	return 0; 
+ } 

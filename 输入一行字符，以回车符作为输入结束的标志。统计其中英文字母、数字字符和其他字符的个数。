@@ -1,0 +1,22 @@
+#include <stdio.h>
+int main()
+{
+    char a;
+    int i,letter=0,other=0,digit=0;
+    while(1)
+    {
+        scanf("%c",&a);
+        if(a=='\n')
+		break;
+        else if((a>=65&&a<=90)||(a>=97&&a<=122))
+        letter++;
+        else if(a>=48&&a<=57)
+        digit++;
+        else
+        other++;
+    }
+    printf("letter:%d\n",letter);
+    printf("digit:%d\n",digit);
+    printf("other:%d\n",other);
+    return 0;
+}

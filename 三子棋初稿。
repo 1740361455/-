@@ -1,0 +1,104 @@
+ #include <stdio.h>
+void menu()
+{
+	printf("**************************\n");
+	printf("**1.开始游戏**0.退出游戏**\n");
+	printf("**************************\n");
+}
+void initboard(char board[3][3],int row,int col)
+{
+	int i,j;
+	for(i=0;i<row;i++)
+	{
+		for(j=0;j<col;j++)
+		board[i][j]=' ';
+	}
+}
+void displayboard(char board[3][3],int row,int col)
+{
+	int i,j;
+	for(i=0;i<row;i++)
+	{
+		for(j=0;j<col;j++)
+		{
+			printf(" %c ",board[i][j]);
+			if(j<col-1)
+			printf("|");
+			else
+			printf("\n");
+		}
+		if(i<row-1)
+		{
+			for(j=0;j<col;j++)
+			{
+			printf("---");
+			if(j<col-1)
+			printf("|");
+			else
+			printf("\n");
+			}	
+		}
+	}
+}
+void playermove(char board[3][3],int row,int col)
+{
+	int x,y;
+	printf("请下棋：\n");
+	while(1)
+	{
+		scanf("%d%d",&x,&y);
+		if(x>=1&&x<=3&&y>=1&&y<=3)
+		{
+		if(board[x-1][y-1]==' ')
+		{
+			board[x-1][y-1]='*';
+			break;
+		}
+	
+		else
+		printf("位置不为空，请重新输入！\n");
+		}
+		else
+		printf("位置非法，请重新输入！\n");
+	}
+}
+void game()
+{
+	const int row=3,col=3;
+	char board[row][col]={0};
+	initboard(board,row,col);
+	displayboard(board,row,col);
+	while(1)
+	{
+		playermove(board,row,col);
+		displayboard(board,row,col);
+	}
+}
+void choose()
+{
+	int num;
+	do
+	{
+	menu();
+	scanf("%d",&num);
+	switch(num)
+	{
+		case 1:
+		game();
+		break;
+		case 0:
+		printf("退出游戏\n");
+		break;
+		default:
+		printf("选择错误，请重试！\n");
+		break;
+	}	
+	}
+	while(num);
+}
+
+int main()
+{
+	choose();
+	return 0;
+} 

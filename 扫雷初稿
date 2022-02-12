@@ -1,0 +1,78 @@
+#include <stdio.h>
+void menu()
+{
+	printf("**************************\n");
+	printf("**1.开始游戏**0.退出游戏**\n");
+	printf("**************************\n");
+}
+void initboard(char board[11][11],int rows,int cols,char set)
+{
+	int i,j;
+	for(i=0;i<rows;i++)
+	{
+		for(j=0;j<cols;j++)
+		board[i][j]=set;
+	}
+}
+void displayboard(char board[11][11],int row,int col)
+{
+	int i,j;
+	for(i=0;i<row;i++)
+	{
+		for(j=0;j<col;j++)
+		{
+			printf(" %c ",board[i][j]);
+			if(j<col-1)
+			printf("|");
+			else
+			printf("\n");
+		}
+		if(i<row-1)
+		{
+			for(j=0;j<col;j++)
+			{
+			printf("---");
+			if(j<col-1)
+			printf("|");
+			else
+			printf("\n");
+			}	
+		}
+	}
+}
+void game()
+{
+	const int row=9,col=9,rows=row+2,cols=col+2;
+	char mine[rows][cols]={0},show[rows][cols]={0};
+	initboard(mine,rows,cols,'0');
+	initboard(show,rows,cols,'*');
+	displayboard(mine,row,col);
+}
+void test()
+{
+	int choose;
+	do
+	{
+	menu();
+	scanf("%d",&choose);
+	switch(choose)
+	{
+		case 1:
+		game();
+		break;
+		case 0:
+		printf("退出游戏\n");
+		break;
+		default:
+		printf("选择错误，请重试！\n");
+		break;
+	}	
+	}
+	while(choose);
+}
+
+int main()
+{
+	test();
+	return 0;
+} 

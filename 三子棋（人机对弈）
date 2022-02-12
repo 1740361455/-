@@ -68,7 +68,6 @@ void computermove(char board[3][3],int row,int col)
 {
 	int x,y;
 	printf("电脑落子：\n");
-	
 	while(1)
 	{
 	    x=rand()%row;

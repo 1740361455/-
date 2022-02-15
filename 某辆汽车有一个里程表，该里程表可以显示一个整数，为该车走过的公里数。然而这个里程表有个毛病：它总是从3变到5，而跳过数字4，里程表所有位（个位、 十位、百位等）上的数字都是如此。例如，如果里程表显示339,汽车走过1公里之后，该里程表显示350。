@@ -1,0 +1,21 @@
+#include<stdio.h>
+int main()
+{
+	int i,j,n,sum=0;
+	scanf("%d",&n);
+	for(i=1; i<=n; i++)
+	{
+		j=i;
+		while(j)
+		{
+			if(j%10==4)
+			{
+				sum++;
+				break;
+			}
+			j/=10;
+		}
+	}
+	printf("%d",n-sum);
+	return 0;
+}

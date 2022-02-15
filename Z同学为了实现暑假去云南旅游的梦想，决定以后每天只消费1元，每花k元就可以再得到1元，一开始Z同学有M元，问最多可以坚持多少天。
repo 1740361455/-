@@ -1,0 +1,20 @@
+#include<stdio.h>
+int main()
+{
+	int k,M,m=0;
+	scanf("%d%d",&M,&k);
+	while(1)
+	{
+		if(M>=k)
+		{
+			m+=k;
+			M=M-k+1;
+		} else
+		{
+			m+=M;
+			break;
+		}
+	}
+	printf("%d",m);
+	return 0;
+}

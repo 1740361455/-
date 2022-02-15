@@ -1,0 +1,15 @@
+#include <stdio.h>
+struct student
+{
+	char name[10];
+	char sex[10];
+	int age;
+	int id;
+};
+int main()
+{
+	struct student a={"小明","男",20,11111111};
+	struct student* p=&a;
+	printf("%s % s %d %d",p->name,p->sex,p->age,p->id);
+	return 0;
+} 

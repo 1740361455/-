@@ -1,0 +1,17 @@
+#include<stdio.h>
+int mystrlen(char* arr)
+{
+	char* a=arr;
+	char* b=arr;
+	while(*a!='\0')
+	a++;
+	return a-b;
+}
+int main()
+{
+	int len;
+	char arr[]={"xzy"};
+	len=mystrlen(arr);
+	printf("%d",len);
+	return 0;
+}

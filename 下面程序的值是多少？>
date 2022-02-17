@@ -1,0 +1,11 @@
+#include <stdio.h>
+int i;
+int main()
+{
+	i--;
+	if(i>sizeof(i))
+	printf(">");
+	else
+	printf("<");
+	return 0;
+}

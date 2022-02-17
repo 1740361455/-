@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main()
+{
+	int a=0x11223344;
+	char* pa=(char*)&a;
+	*pa=0;
+	printf("%x",a);
+	return 0;
+}

@@ -1,0 +1,19 @@
+#include<stdio.h>
+double Pow(int n,int k)
+{
+	if(k<0)
+	return (1.0/Pow(n,-k));
+	else if(k==0)
+	return 1;
+	else
+	return n*Pow(n,--k);
+}
+int main()
+{
+	int n,k;
+	double sum;
+	scanf("%d%d",&n,&k);
+	sum=Pow(n,k);
+	printf("%lf",sum);
+	return 0;
+}

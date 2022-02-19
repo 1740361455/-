@@ -1,0 +1,13 @@
+#include <stdio.h>
+int main()
+{
+    int heads,feet,a,b;
+    scanf("%d%d",&heads,&feet);
+    a=(feet-(heads*2))/2;
+    b=heads-a;
+    if(a*4+b*2==feet&&a>0&&b>0)
+        printf("%d %d",b,a);
+    else
+        printf("No Answer");
+    return 0;
+ }

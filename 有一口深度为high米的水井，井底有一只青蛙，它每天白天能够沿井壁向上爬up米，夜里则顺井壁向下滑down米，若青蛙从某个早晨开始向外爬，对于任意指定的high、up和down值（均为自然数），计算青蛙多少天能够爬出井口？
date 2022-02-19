@@ -1,0 +1,13 @@
+#include <stdio.h>
+int main()
+{
+	int high,up,down,n=0,sum=1;
+	scanf("%d%d%d",&high,&up,&down);
+	while(n+up<high)
+	{
+		n+=up-down;
+		sum++;
+	}
+	printf("%d",sum);
+	return 0;
+}

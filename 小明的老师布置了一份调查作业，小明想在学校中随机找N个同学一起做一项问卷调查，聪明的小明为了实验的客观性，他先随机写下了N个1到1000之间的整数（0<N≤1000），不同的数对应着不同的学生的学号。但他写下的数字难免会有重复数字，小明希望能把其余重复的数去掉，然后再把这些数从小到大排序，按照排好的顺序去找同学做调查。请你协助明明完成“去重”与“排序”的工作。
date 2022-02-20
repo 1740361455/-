@@ -1,0 +1,43 @@
+ #include <stdio.h>
+int main()
+{
+	int N,M,arr[1001]={0},n,i,j,tmp;
+	scanf("%d\n",&N);
+	for(i=0;i<N;i++)
+	scanf("%d ",&arr[i]);
+	for(i=0;i<N-1;i++)
+	{
+		n=1;
+		for(j=0;j<N-1-i;j++)
+		{
+			if(arr[j]>arr[j+1])
+			{
+				tmp=arr[j+1];
+				arr[j+1]=arr[j];
+				arr[j]=tmp;
+				n=0;
+			}
+		}
+		if(n==1)
+		break;
+	}
+	for(i=0;i<N-1;i++)
+	{
+		if(arr[i]==arr[i+1])
+		{
+			for(j=i;j<N-1;j++)
+			{
+				tmp=arr[j+1];
+				arr[j+1]=arr[j]; 
+				arr[j]=tmp;
+				
+			}
+			i--;
+			N--;				
+		}
+	}
+	printf("%d\n",N);
+	for(i=0;i<N;i++)
+	printf("%d ",arr[i]);
+    return 0;
+} 

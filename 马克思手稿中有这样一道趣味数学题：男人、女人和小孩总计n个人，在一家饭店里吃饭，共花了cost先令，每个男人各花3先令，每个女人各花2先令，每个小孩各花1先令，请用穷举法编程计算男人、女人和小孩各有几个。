@@ -1,0 +1,20 @@
+#include <stdio.h>
+int main()
+{
+	int i,j,n,cost,x,m=0;
+	scanf("%d%d",&n,&cost);
+	for(i=0;i<=n;i++)
+	{
+		for(j=0;j<=n-i;j++)
+		{
+			x=cost-i*3-j*2;
+			if(n==(x+i+j))
+			{
+				printf("%d %d %d\n",i,j,x);
+				m=1;
+			}	
+		}
+	}
+	if(m==0)
+	printf("No answer");
+}

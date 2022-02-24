@@ -1,0 +1,18 @@
+ #include <stdio.h>
+int main()
+{
+	int T,n,i,j,sum=0,num;
+	scanf("%d\n",&T);
+	for(i=1;i<=T;i++)
+	{
+		scanf("%d\n",&n);
+		for(j=1;j<=n;j++)
+		{
+			scanf("%d ",&num);
+			sum+=num;
+		}
+		printf("%d\n",sum);
+		sum=0;
+	}
+    return 0;
+} 

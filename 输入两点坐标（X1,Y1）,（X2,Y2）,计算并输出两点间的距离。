@@ -1,0 +1,12 @@
+#include< stdio.h>
+#include <math.h>
+int main()
+{
+    float x1,y1,x2,y2,a;
+    while(scanf("%f%f%f%f",&x1,&y1,&x2,&y2)!=EOF)
+    {
+        a=sqrt(pow(x1-x2,2)+pow(y1-y2,2));
+        printf("%.2f\n",a);
+    }
+    return 0;
+}

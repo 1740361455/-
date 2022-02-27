@@ -1,0 +1,12 @@
+ #include <stdio.h>
+int main()
+{
+	int n,num,i,a,b,c;
+	scanf("%d\n",&n);
+	for(i=1;i<=n;i++)
+	{
+		scanf("%*6d%4d%2d%2d%*4d\n",&a,&b,&c);
+		printf("%d-%02d-%02d\n",a,b,c);
+	}
+    return 0;
+}

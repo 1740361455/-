@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <math.h>
+double funF(double x)
+{
+	double n;
+	return n=fabs(x-3)+fabs(x+1);
+}
+double funG(double x)
+{
+	double n;
+	return n=pow(x,2)-3*x;
+}

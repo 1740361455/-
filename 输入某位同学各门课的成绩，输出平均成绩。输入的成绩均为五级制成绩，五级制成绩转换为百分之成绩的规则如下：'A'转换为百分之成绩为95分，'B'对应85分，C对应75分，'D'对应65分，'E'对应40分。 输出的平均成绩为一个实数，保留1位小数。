@@ -1,0 +1,29 @@
+#include <stdio.h>
+int getScore(char g)
+{
+	if(g=='A')
+	return 95;
+	else if(g=='B')
+	return 85;
+	else if(g=='C')
+	return 75;
+	else if(g=='D')
+	return 65;
+	else
+	return 40;
+}
+int main()
+{
+	char n;
+	float average=0.0,x=0.0;
+	while(1)
+	{
+		n=getchar();
+		if(n=='\n')
+		break;
+		average+=getScore(n);
+		x++;
+	}
+	printf("%.1f",average/x);
+	return 0;
+}

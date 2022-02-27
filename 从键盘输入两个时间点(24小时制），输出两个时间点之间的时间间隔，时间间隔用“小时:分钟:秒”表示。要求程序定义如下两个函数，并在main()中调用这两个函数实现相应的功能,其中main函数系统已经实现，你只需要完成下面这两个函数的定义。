@@ -1,0 +1,13 @@
+#include<stdio.h>
+int HmsToS(int h,int m,int s)
+{
+	return h*60*60+m*60+s;
+}
+void PrintTime(int s)
+{
+	int a,b,c;
+	c=s%60;
+	b=(s/60)%60;
+	a=s/60/60;
+	printf("%02d:%02d:%02d\n",a,b,c);
+}

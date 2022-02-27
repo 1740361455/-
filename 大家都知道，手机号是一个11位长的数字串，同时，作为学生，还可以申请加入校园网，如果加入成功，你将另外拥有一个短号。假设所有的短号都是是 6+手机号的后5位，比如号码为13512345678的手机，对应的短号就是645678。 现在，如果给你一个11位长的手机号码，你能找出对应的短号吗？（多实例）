@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main()
+{
+    int n,num,i;
+    scanf("%d\n",&n);
+    for(i=1;i<=n;i++)
+    {
+        scanf("%*6d%5d\n",&num);
+        printf("6%05d\n",num);
+    }
+    return 0;
+}

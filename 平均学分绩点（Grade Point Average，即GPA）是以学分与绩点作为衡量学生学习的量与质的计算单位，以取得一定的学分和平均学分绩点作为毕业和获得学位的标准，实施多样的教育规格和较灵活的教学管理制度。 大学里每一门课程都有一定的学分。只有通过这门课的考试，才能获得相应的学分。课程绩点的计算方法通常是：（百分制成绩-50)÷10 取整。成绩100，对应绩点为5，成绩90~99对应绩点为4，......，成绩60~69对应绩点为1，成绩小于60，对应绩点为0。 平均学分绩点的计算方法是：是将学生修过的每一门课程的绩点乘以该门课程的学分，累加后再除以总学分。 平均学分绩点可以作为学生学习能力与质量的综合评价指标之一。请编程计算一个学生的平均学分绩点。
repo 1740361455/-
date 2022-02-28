@@ -1,0 +1,24 @@
+#include <stdio.h>
+int GPA(int x)
+{
+	if(x>=60)
+	return (x-50)/10;
+	else
+	return 0;
+}
+int main()
+{
+	int n,x,y,num=0;
+	float sum=0.0;
+	scanf("%d",&n);
+	while(n)
+	{
+		scanf("%d%d",&y,&x);
+		num+=y;
+		sum+=GPA(x)*y;
+		n--;
+	}
+	sum/=num;
+	printf("%.1f",sum);
+	return 0;
+} 

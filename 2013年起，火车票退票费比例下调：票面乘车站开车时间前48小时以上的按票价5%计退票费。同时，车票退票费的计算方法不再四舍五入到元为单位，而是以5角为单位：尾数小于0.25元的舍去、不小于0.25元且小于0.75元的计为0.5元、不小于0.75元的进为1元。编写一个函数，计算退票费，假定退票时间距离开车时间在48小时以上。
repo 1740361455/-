@@ -1,0 +1,14 @@
+#include<stdio.h>
+double CancelFee(double price)
+{
+    double a,b;
+    a=price*0.05;
+    b=a-(int)a;
+    if(b<0.25)
+	a=(int)a;
+    else if(b>=0.25&&b<0.75)
+	a=(int)a+0.5;
+    else if(b>=0.75)
+	a=(int)a+1;
+    return a;
+}

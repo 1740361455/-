@@ -1,0 +1,27 @@
+#include <stdio.h>
+int facsum(int n)
+{
+    int i,sum=1;
+    for(i=2;i<n;i++)
+    {
+        if(n%i==0)
+        sum+=i;
+    }
+    return sum;
+}
+int main()
+{
+	int m,n,x=0;
+	scanf("%d%d",&m,&n);
+	for(;m<=n;m++)
+	{
+		if((facsum(m))>m&&facsum(m)<=n&&(facsum(facsum(m))==m))
+		{
+			printf("%d %d\n",m,facsum(m));
+			x=1;
+		}
+	}
+	if(x==0)
+	printf("No answer");
+	return 0;
+}

@@ -1,0 +1,23 @@
+#include <stdio.h>
+int inverse(int n) 
+{
+	int a=0;
+	while(n)
+	{
+		a=a*10+n%10;
+		n/=10;
+	}
+	return a;
+}
+int main()
+{
+	int n,m;
+	scanf("%d",&n);
+	while(m=inverse(n),m!=n)
+	{
+		printf("%d ",n);
+		n=m+n;
+	}
+	printf("%d",n);
+	return 0;
+}

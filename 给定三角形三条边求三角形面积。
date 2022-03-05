@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main()
+{
+	float a,b,c,p,V;
+	scanf("%f%f%f",&a,&b,&c);
+	p=(a+b+c)/2;
+	V=p*(p-a)*(p-b)*(p-c);
+	printf("%.2f",V);
+	return 0;
+}

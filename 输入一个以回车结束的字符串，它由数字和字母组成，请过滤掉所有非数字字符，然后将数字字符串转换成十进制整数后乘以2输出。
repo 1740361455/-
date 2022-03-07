@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main()
+{
+	int sum;
+	char x;
+	while(1)
+	{
+		x=getchar();
+		if(x<='9'&&x>='0')
+		{
+			x-=48;
+			sum=sum*10+x;
+		}
+		else if(x=='\n')
+		break;
+	}
+	printf("%d",sum*2);
+	return 0;
+}

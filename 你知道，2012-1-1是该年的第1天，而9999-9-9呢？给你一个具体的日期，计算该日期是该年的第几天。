@@ -1,0 +1,21 @@
+#include<stdio.h>
+int main()
+{
+    int a[13]={0},i=0,year,month,day,sum=0;
+    scanf("%d-%d-%d",&year,&month,&day);
+    for(i=0;i<12;i++)
+    {
+        if(i==1||i==3||i==5||i==7||i==8||i==10||i==12)a[i]=31;
+        else if(i==4||i==6||i==9||i==11)a[i]=30;
+        else if(i==2)a[i]=28;
+    }
+    for(i=1;i<month;i++)sum+=a[i];
+    if(month>2)
+    {
+    if((year%4==0&&year%100!=0)||(year%400==0))sum=sum+day+1;
+    else sum=sum+day;
+    }
+    else sum+=day;
+    printf("%d",sum);
+    return 0;
+}

@@ -1,131 +1,148 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#define ROW 10
+#define COL 10
 void menu()
 {
-	printf("**************************\n");
-	printf("**1.开始游戏**0.退出游戏**\n");
-	printf("**************************\n");
+	printf("1.开始游戏 0.退出游戏\n");
 }
-void initboard(char board[11][11],int rows,int cols,char set)
+void initboard(char board[ROW][COL],int row,int col,char sign)
 {
 	int i,j;
-	for(i=0;i<rows;i++)
+	for(i=0;i<row;i++)
 	{
-		for(j=0;j<cols;j++)
-		board[i][j]=set;
+		if(i==0)
+		{
+			for(j=0;j<col;j++)
+			{
+				board[i][j]=j;
+				board[j][i]=j;
+			}	
+		}
+		else
+		{
+			for(j=1;j<col;j++)
+			board[i][j]=sign;
+		}
 	}
 }
-void displayboard(char board[11][11],int row,int col)
+void displayboard(char board[ROW][COL],int row,int col)
 {
 	int i,j;
-	for(i=0;i<=col;i++)
-	printf("%d ",i);
-	printf("\n");
-	for(i=1;i<=row;i++)
+	for(i=0;i<row;i++)
 	{
-		printf("%d ",i);
-		for(j=1;j<=col;j++)
-		printf("%c ",board[i][j]);
-		printf("\n");	
+		for(j=0;j<col;j++)
+		{
+			if(i==0||j==0)
+			printf("%d ",board[i][j]);
+			else
+			printf("%c ",board[i][j]);
+		}
+	
+		printf("\n");
 	}
 }
-void setmine(char board[11][11],int row,int col)
+void setmine(char board[ROW][COL],int row,int col)
 {
-	int boom=10,x,y,i;
-	while(boom)
+	int mine=10,x,y;
+	do
 	{
 		x=rand()%row+1;
 		y=rand()%col+1;
 		if(board[x][y]=='0')
 		{
 			board[x][y]='1';
-			boom--;
+			mine--;
 		}
 	}
+	while(mine);
 }
-int getmine(char mine[11][11],int x,int y)
-{
-	char boom='0';
+int getmine(char mine[ROW][COL],int x,int y,int row,int col)
+{	
+    char mines='0';
 	int i,j;
 	for(i=x-1;i<=x+1;i++)
 	{
 		for(j=y-1;j<=y+1;j++)
-		boom+=mine[i][j]-'0';
+		if(i>0&&j>0&&i<row&&j<col)
+		mines+=mine[i][j]-'0';
 	}
-	return boom;
+	return mines;
 }
-void findmine(char mine[11][11],char show[11][11],int row,int col)
+void playermove(char mine[ROW][COL],char show[ROW][COL],int row,int col)
 {
-	int x,y,boom,win=0;
-	while(1)
-	{
-	    printf("请选择坐标:\n");
-		scanf("%d%d",&x,&y);
-		if(show[x][y]=='*')
+	int x,y,win=0;
+	do
+	{	
+	    printf("请排雷\n");
+		scanf("%d %d",&x,&y);
+		if(x>0&&x<row&&y>0&&y<col)
 		{
-		    if(x>=1&&x<=row&&y>=1&&y<=col)
-	        {
-	    	    if(mine[x][y]=='1')
-	    	    {
-	    		    printf("彩笔，踩雷了！\n");
-	    		    displayboard(mine,row,col);
-	    		    break;
-			    }
-			    else
-		 	    {
-				   boom=getmine(mine,x,y);
-				   show[x][y]=boom;
-				   displayboard(show,row,col);
-				   win++;
-			    }
-	        }
-	        else
-	        printf("坐标非法，请重新输入！\n");
-	    }
+			if(show[x][y]=='#')
+			{
+				if(mine[x][y]=='1')
+				{
+					printf("你踩雷了\n");
+					{
+						displayboard(mine,ROW,COL);
+						break;
+					}
+				}
+				else
+				{
+					show[x][y]=getmine(mine,x,y,ROW,COL);
+					displayboard(show,ROW,COL);
+					win++;
+				}
+			}
+			else
+			printf("位置不为空，请重新输入\n");
+		}
 		else
-		printf("坐标不为空，请重新输入！\n");
-		if(win==row*col-10)
-		printf("你成功排查了所有雷！\n"); 		
+		printf("位置非法，请重新输入\n");
+		if(win==((row-1)*(col-1)-10))
+		{
+			printf("你获胜了\n");
+			displayboard(mine,ROW,COL);
+			break;
+		}
 	}
+	while(1);
 }
 void game()
 {
-	const int row=9,col=9,rows=row+2,cols=col+2;
-	char mine[rows][cols]={0},show[rows][cols]={0};
-	initboard(mine,rows,cols,'0');
-	initboard(show,rows,cols,'*');
-	displayboard(show,row,col);
-	setmine(mine,row,col);
-	findmine(mine,show,row,col);
+	char mine[ROW][COL]={0},show[ROW][COL]={0};
+	initboard(mine,ROW,COL,'0');
+	initboard(show,ROW,COL,'#');
+	displayboard(show,ROW,COL);
+	setmine(mine,ROW,COL);
+	playermove(mine,show,ROW,COL);
 }
 void test()
 {
-	
 	int choose;
 	srand((unsigned int)time(NULL));
 	do
 	{
-	menu();
-	scanf("%d",&choose);
-	switch(choose)
-	{
-		case 1:
-		game();
-		break;
-		case 0:
-		printf("退出游戏!\n");
-		break;
-		default:
-		printf("选择错误，请重试！\n");
-		break;
-	}	
+		menu();
+		scanf("%d",&choose);
+		switch(choose)
+		{
+			case 1:
+				game();
+				break;
+			case 0:
+				printf("游戏结束\n");
+				break;
+			default:
+				printf("选择错误，请重新选择\n");
+		}
 	}
 	while(choose);
 }
-
 int main()
 {
 	test();
 	return 0;
-} 
+}

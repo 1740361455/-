@@ -12,3 +12,39 @@ int main()
 	printf("%d",sum);
 	return 0;
 }
+
+
+
+
+#include<stdio.h>
+int main()
+{
+	int sum=0,a;
+	scanf("%d",&a);
+	while(a)
+	{
+		a=a&(a-1);
+		sum++;
+	}
+	printf("%d",sum);
+	return 0;
+}
+
+
+
+
+
+
+#include<stdio.h>
+int main()
+{
+	int sum=0,a,i;
+	scanf("%d",&a);
+	for(i=0;i<32;i++)
+	{
+		if((a>>i)&1==1)
+		sum++;
+	}
+	printf("%d",sum);
+	return 0;
+}

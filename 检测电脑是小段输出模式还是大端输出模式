@@ -1,0 +1,10 @@
+#include<stdio.h>
+int main()
+{
+	int a=1;
+	if((char)a==1)
+	printf("小端模式");
+	else
+	printf("大端模式");
+	return 0;
+}

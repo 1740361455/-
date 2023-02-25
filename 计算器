@@ -1,0 +1,128 @@
+#include<stdio.h>
+int add(int x,int y)
+{
+	return x+y;
+}
+int sub(int x,int y)
+{
+	return x-y;
+}
+int mul(int x,int y)
+{
+	return x*y;
+}
+int div(int x,int y)
+{
+	return x/y;
+}
+void menu()
+{
+	printf("1.加 2.减 3.乘 4.除 0.退出\n");
+	printf("请选择：>\n");
+}
+void test()
+{
+	int choose,x,y,sum;
+	int (*p[])(int,int)={0,add,sub,mul,div};
+	do{
+		menu();
+		scanf("%d",&choose);
+		if(choose>=1&&choose<=4)
+		{
+			printf("请输入数字\n");
+			scanf("%d %d",&x,&y);
+			sum=p[choose](x,y);
+			printf("%d\n",sum);
+		}
+		else if(choose==0)
+		{
+			printf("退出程序\n");
+			break;
+		}
+		else
+		printf("输入错误，请重新输入\n");
+	}while(1);
+	
+}
+int main()
+{
+	test();
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include<stdio.h>
+int add(int x,int y)
+{
+	return x+y;
+}
+int sub(int x,int y)
+{
+	return x-y;
+}
+int mul(int x,int y)
+{
+	return x*y;
+}
+int div(int x,int y)
+{
+	return x/y;
+}
+void menu()
+{
+	printf("1.加 2.减 3.乘 4.除 0.退出\n");
+	printf("请选择：>\n");
+}
+void calc(int (*p)(int,int))
+{
+	int x,y;
+	printf("请输入操作数\n");
+	scanf("%d %d",&x,&y);
+	printf("%d\n",p(x,y));
+}
+void test()
+{
+	int choose;
+	do{
+		menu();
+		scanf("%d",&choose);
+		switch(choose)
+		{
+			case 1:
+			calc(add);
+			break;
+			case 2:
+			calc(sub);
+			break;
+			case 3:
+			calc(mul);
+			break;
+			case 4:
+			calc(div);
+			break;
+			case 0:
+			printf("退出程序\n");
+			break;
+			default:
+		    printf("输入错误，请重新输入\n");
+			break;
+		}
+	}while(choose);
+	
+}
+int main()
+{
+	test();
+	return 0;
+}

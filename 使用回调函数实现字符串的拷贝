@@ -1,0 +1,14 @@
+#include<stdio.h>
+void my_printf(char* string)
+{
+	printf("%s",string);
+}
+void test(void (*p)(char*))
+{
+	p("xzy");
+}
+int main()
+{
+	test(my_printf);
+	return 0;
+}

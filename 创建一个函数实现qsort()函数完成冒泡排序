@@ -1,0 +1,93 @@
+#include<stdio.h>
+#include<string.h>
+struct str
+{
+	char name[10];
+	int age;
+};
+int cmp_int(const void* e1,const void* e2)
+{
+	return *(int*)e1-*(int*)e2;
+}
+int cmp_float(const void* e1,const void* e2)
+{
+	if(*(int*)e1==*(int*)e2)
+	return 0;
+	else if(*(int*)e1>*(int*)e2)
+	return 1;
+	else return -1;
+}
+int cmp_struct_age(const void* e1,const void* e2)
+{
+	return ((struct str*)e1)->age-((struct str*)e2)->age;
+}
+int cmp_struct_name(const void* e1,const void* e2)
+{
+	return strcmp(((struct str*)e1)->name,((struct str*)e2)->name);
+}
+void tmp_s(char* e1,char* e2,int width)
+{
+	int i;
+	char tmp;
+	for(i=0;i<width;i++)
+	{
+		tmp=*e1;
+		*e1=*e2;
+		*e2=tmp;
+		e1++;
+		e2++;
+	}
+}
+void quicksort(void* arr,int sz,int width,int cmp(const void* e1,const void* e2))
+{
+	int i,j;
+	for(i=0;i<sz-1;i++)
+	{
+		for(j=0;j<sz-1-i;j++)
+		{
+			if(cmp((char*)arr+j*width,(char*)arr+(j+1)*width)>0)
+			tmp_s((char*)arr+j*width,(char*)arr+(j+1)*width,width);
+		}
+	}
+}
+void test1()
+{
+	int arr[]={5,7,8,9,4,6,1,2,3};
+	int sz=sizeof(arr)/sizeof(arr[0]);
+	int i;
+	quicksort(arr,sz,sizeof(arr[0]),cmp_int);
+	for(i=0;i<sz;i++)
+	printf("%d ",arr[i]);
+}
+
+void test2()
+{
+	float brr[]={1.0,5.0,4.0,3.0,6.0,9.0,8.0,7.0,2.0};
+	int sz=sizeof(brr)/sizeof(brr[0]);
+	int i;
+	quicksort(brr,sz,sizeof(brr[0]),cmp_float);
+	for(i=0;i<sz;i++)
+	printf("%f ",brr[i]);
+}
+void test3()
+{
+	struct str s[]={{"xzy",22},{"xmy",23},{"xxx",18}};
+	int sz=sizeof(s)/sizeof(s[0]);
+	int i;
+	quicksort(s,sz,sizeof(s[0]),cmp_struct_age);
+	for(i=0;i<sz;i++)
+	printf("%s,%d ",s[i].name,s[i].age);
+	quicksort(s,sz,sizeof(s[0]),cmp_struct_name);
+	printf("\n");
+	for(i=0;i<sz;i++)
+	printf("%s,%d ",s[i].name,s[i].age);
+}
+int main()
+{
+	test1();
+	printf("\n");
+	test2();
+	printf("\n");
+	test3();
+	printf("\n");
+}

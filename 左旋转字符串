@@ -30,3 +30,36 @@ int main()
 
 
 
+#include<stdio.h>
+#include<string.h>
+void reverse(char* arr,char* brr)
+{
+	char* left=arr;
+	char* right=brr;
+	char tmp;
+	while(left<right)
+	{
+		tmp=*left;
+		*left=*right;
+		*right=tmp;
+		left++;
+		right--;
+	}
+}
+void left_move(char* arr,int num)
+{
+	int sz=strlen(arr);
+	reverse(arr,arr+num-1);
+	reverse(arr+num,arr+sz-1);
+	reverse(arr,arr+sz-1);
+	printf("%s",arr);
+}
+int main()
+{
+	char arr[]={0};
+	int num;
+	gets(arr);
+	scanf("%d",&num);
+	left_move(arr,num);
+	return 0;
+}

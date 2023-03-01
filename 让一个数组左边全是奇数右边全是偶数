@@ -1,0 +1,27 @@
+#include<stdio.h>
+void swap(int arr[],int sz)
+{
+	int left=0,right=sz-1,tmp,i;
+	while(left<right)
+	{
+		while((left<right)&&(arr[left]%2==1))
+		left++;
+		while((left<right)&&(arr[right]%2==0))
+		right--;
+		if(left<right)
+		{
+			tmp=arr[left];
+			arr[left]=arr[right];
+			arr[right]=tmp;
+		}
+	}
+	for(i=0;i<sz;i++)
+	printf("%d",arr[i]);
+}
+int main()
+{
+	int arr[]={2,5,4,8,9,6,2,1};
+	int sz=sizeof(arr)/sizeof(arr[0]);
+	swap(arr,sz);
+	return 0;
+}

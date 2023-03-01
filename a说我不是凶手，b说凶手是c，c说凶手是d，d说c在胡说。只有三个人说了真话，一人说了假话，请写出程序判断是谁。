@@ -1,0 +1,10 @@
+#include<stdio.h>
+int main()
+{
+	int x;
+	for(x='a';x<='d';x++)
+	{
+		if((x!='a')+(x=='c')+(x=='d')+(x!='d')==3)
+		printf("%c",x);
+	}
+}

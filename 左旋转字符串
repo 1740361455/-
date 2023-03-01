@@ -1,0 +1,23 @@
+#include<stdio.h>
+void left_move(char arr[],int num)
+{
+	int i,j,sz=sizeof(arr)/sizeof(arr[0]);
+	char tmp;
+	for(i=0;i<num;i++)
+	{
+		tmp=arr[0];
+		for(j=0;j<sz-1;j++)
+		arr[j]=arr[j+1];
+		arr[sz-1]=tmp;
+	}
+	printf("%s",arr);
+}
+int main()
+{
+	char arr[]={0};
+	int num;
+	gets(arr);
+	scanf("%d",&num);
+	left_move(arr,num);
+	return 0;
+}

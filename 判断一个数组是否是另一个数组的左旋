@@ -43,3 +43,33 @@ int main()
 	printf("no");
 	return 0;
 }
+
+
+
+
+
+
+
+#include<stdio.h>
+#include<string.h>
+int is_left_move(char* arr,char* brr)
+{
+	int a_len=strlen(arr),b_len=strlen(brr);
+	if(a_len!=b_len)
+	return 0;
+	strncat(arr,arr,a_len);
+	if(strstr(arr,brr)==NULL)
+	return 0;
+	else
+	return 1;
+}
+int main()
+{
+	char arr[]="abcde",brr[]="bcdea";
+	int x=is_left_move(arr,brr);
+	if(x==1)
+	printf("yes");
+	else
+	printf("no");
+	return 0;
+}

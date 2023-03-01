@@ -1,0 +1,36 @@
+#include<stdio.h>
+int main()
+{
+	int num,tmp,money=0;
+	scanf("%d",&money);
+	num=money;
+	tmp=money;
+	while(tmp>=2)
+	{
+		num+=tmp/2;
+		tmp=tmp/2+tmp%2;
+	}
+	printf("%d",num);
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+#include<stdio.h>
+int main()
+{
+	int num,money=0;
+	scanf("%d",&money);
+	if(money>0)
+	num=money*2-1;
+	printf("%d",num);
+	return 0;
+}

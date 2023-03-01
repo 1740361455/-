@@ -1,7 +1,8 @@
 #include<stdio.h>
+#include<string.h>
 void left_move(char arr[],int num)
 {
-	int i,j,sz=sizeof(arr)/sizeof(arr[0]);
+	int i,j,sz=strlen(arr);
 	char tmp;
 	for(i=0;i<num;i++)
 	{
@@ -21,3 +22,11 @@ int main()
 	left_move(arr,num);
 	return 0;
 }
+
+
+
+
+
+
+
+

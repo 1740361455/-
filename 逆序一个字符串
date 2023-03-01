@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<string.h>
+void reverse(char* brr)
+{
+	char* left=brr;
+	char* right=brr+strlen(brr)-1;
+	char tmp;
+	while(left<right)
+	{
+		tmp=*left;
+		*left=*right;
+		*right=tmp;
+		left++;
+		right--;
+	}
+}
+int main()
+{
+	char arr[256]={0};
+	gets(arr);
+	reverse(arr);
+	printf("%s",arr);
+}

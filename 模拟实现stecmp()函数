@@ -1,0 +1,20 @@
+#include<stdio.h>
+int my_strcmp(const char* arr,const char* brr)
+{
+	while(*arr==*brr)
+	{
+		if(*arr==0)
+		return 0;
+		arr++;
+		brr++;
+	}
+	return (*arr-*brr);
+}
+int main()
+{
+	char arr[]="abcd";
+	char brr[]="abce";
+	int ret=my_strcmp(arr,brr);
+	printf("%d",ret);
+	return 0;
+}

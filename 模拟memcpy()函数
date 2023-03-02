@@ -1,0 +1,21 @@
+#include<stdio.h>
+void* my_memcpy(void* arr,const void* brr,int num)
+{
+	
+	while(num--)
+	{
+		*(char*)arr=*(char*)brr;
+		(char*)arr++;
+		(char*)brr++;
+	}
+}
+int main()
+{
+	int arr[10]={1,2,3};
+	int brr[6]={5,5,5,3,3,3};
+	int i;
+	my_memcpy(arr,brr,sizeof(brr));
+	for(i=0;i<sizeof(arr)/sizeof(arr[0]);i++)
+	printf("%d ",arr[i]);
+	return 0;
+}

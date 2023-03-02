@@ -1,0 +1,31 @@
+#include<stdio.h>
+char* my_strstr(const char* arr,const char* brr)
+{
+	char* arr1=NULL;
+	char* arr2=NULL;
+	char* cur=(char*)arr;
+	if((*brr)=='\0')
+	return (char*)arr;
+	while(cur)
+	{
+		arr1=cur;
+		arr2=(char*)brr;
+		while(*arr1&&*arr2&&(*arr1)==(*arr2))
+		{
+			arr1++;
+			arr2++;
+		}
+		if((*arr2)=='\0')
+		return cur;
+		cur++;
+	}
+	return NULL;
+}
+int main()
+{
+	char* arr="abbbcd";
+	char* brr="bbc";
+	char* crr=my_strstr(arr,brr);
+	printf("%s",crr);
+	return 0;
+}

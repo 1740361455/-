@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int* p=(int*)malloc(10*sizeof(int));//int* p=calloc(40,sizeof(int);
+	int* pp;
+	int i;
+	for(i=0;i<10;i++)
+	{
+		*(p+i)=i;
+		printf("%-4d ",*(p+i));
+	}
+	printf("\n");
+	pp=(int*)realloc(p,20*sizeof(int));
+	for(i=10;i<20;i++)
+	{
+		*(pp+i)=i;
+		printf("%-4d ",*(pp+i));
+	}
+	free(pp);
+	pp=NULL;
+	return 0;
+}

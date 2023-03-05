@@ -1,23 +1,35 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
+#include<errno.h>
 int main()
 {
-	int* p=(int*)malloc(10*sizeof(int));//int* p=calloc(40,sizeof(int);
+	int* p=(int*)malloc(10*sizeof(int));//int* p=calloc(40,sizeof(int);亦可
 	int* pp;
 	int i;
-	for(i=0;i<10;i++)
+	if(p==NULL)
+	printf("%s",strerror(errno));
+	else
 	{
-		*(p+i)=i;
-		printf("%-4d ",*(p+i));
+		for(i=0;i<10;i++)
+		{
+			*(p+i)=i;
+			printf("%-4d ",*(p+i));
+		}
+		printf("\n");
+		pp=(int*)realloc(p,20*sizeof(int));
+		if(pp==NULL)
+		printf("%s",strerror(errno));
+		else
+		{
+		    for(i=10;i<20;i++)
+			{
+				*(pp+i)=i;
+				printf("%-4d ",*(pp+i));
+			}
+			free(pp);
+			pp=NULL;
+		}
 	}
-	printf("\n");
-	pp=(int*)realloc(p,20*sizeof(int));
-	for(i=10;i<20;i++)
-	{
-		*(pp+i)=i;
-		printf("%-4d ",*(pp+i));
-	}
-	free(pp);
-	pp=NULL;
 	return 0;
 }

@@ -168,3 +168,209 @@ int main()
 	}while(choose);
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<errno.h>
+#define max_name 10
+#define max_sex 10
+#define max_tel 20
+#define max 3
+enum
+{
+	off,
+	add,
+	del,
+	search,
+	modify,
+	show
+};
+struct people
+{
+	char name[max_name];
+	int age;
+	char sex[max_sex];
+	int tel[max_tel];
+};
+struct contact
+{
+	struct people* data;
+	int size;
+	int max_size;
+}con;
+void initcontact(struct contact* p)
+{
+	p->data=(struct people*)malloc(max*sizeof(struct people));
+	if(p->data==NULL)
+	printf("%s",strerror(errno));
+	p->size=0;
+	p->max_size=max;
+}
+int find_name(const struct contact* p,char f_name[])
+{
+	int i;
+	for(i=0;i<p->size;i++)
+	{
+		if(strcmp(p->data[i].name,f_name)==0)
+		return i;
+	}
+	return -1;
+}
+void checkcontact(struct contact* p)
+{
+		struct people* pp;
+		if(p->size==p->max_size)
+		{
+			pp=(struct people*)realloc(p->data,(p->max_size+2)*sizeof(struct people));
+			if(pp==NULL)
+			printf("%s",strerror(errno));
+			else
+			{
+				p->data=pp;
+				p->max_size+=2;
+				printf("通讯录扩容成功\n");
+			}
+		}
+}
+void addcontact(struct contact* p)
+{
+	checkcontact(p);
+	printf("请输入姓名:>");
+	scanf("%s",p->data[p->size].name);
+	printf("请输入年龄:>");
+	scanf("%d",&(p->data[p->size].age));
+	printf("请输入性别:>");
+	scanf("%s",p->data[p->size].sex);
+	printf("请输入手机号码:>");
+	scanf("%s",p->data[p->size].tel);
+	p->size++;	
+	printf("添加成功\n");
+}
+void delcontact(struct contact* p)
+{
+	int x,i;
+	char del_name[]="";
+	printf("请输入需要删除联系人的姓名\n");
+	scanf("%s",del_name);
+	x=find_name(p,del_name);
+	if(x==-1)
+	printf("通讯录中不存在该联系人，请重试\n");
+	else
+	{
+		for(i=x;i<(p->size)-1;i++)
+		{
+			p->data[i]=p->data[i+1];
+		}
+		p->size--;
+		printf("删除成功\n");
+	}
+}
+void searchcontact(struct contact* p)
+{
+	int x;
+	char search_name[]="";
+	printf("请输入想要查找的联系人姓名\n");
+	scanf("%s",search_name);
+	x=find_name(p,search_name);
+	if(x==-1)
+	printf("查找的联系人不存在，请重试\n");
+	else
+	{
+		printf("%-10s%-10s%-10s%-20s\n","名字","年龄","性别","电话号码");
+		printf("%-10s%-10d%-10s%-20s\n",p->data[x].name,p->data[x].age,p->data[x].sex,p->data[x].tel);
+	}
+}
+void modifycontact(struct contact* p)
+{
+	int x;
+	char modify_name[]="";
+	printf("请输入想要修改的联系人姓名\n");
+	scanf("%s",modify_name);
+	x=find_name(p,modify_name);
+	if(x==-1)
+	printf("想要修改的联系人不存在，请重试\n");
+	else
+	{
+		printf("请输入修改后的姓名:>");
+		scanf("%s",p->data[x].name);
+		printf("请输入修改后的年龄:>");
+		scanf("%d",&(p->data[x].age));
+		printf("请输入修改后的性别:>");
+		scanf("%s",p->data[x].sex);
+		printf("请输入修改后的手机号码:>");
+		scanf("%s",p->data[x].tel);	
+		printf("修改成功\n");
+	}
+}
+void showcontact(const struct contact* p)
+{
+	int i;
+	if(p->size==0)
+	printf("通讯录为空，请添加联系人\n");
+	else
+	{
+		printf("%-10s%-10s%-10s%-20s\n","名字","年龄","性别","电话号码");
+		for(i=0;i<p->size;i++)
+		printf("%-10s%-10d%-10s%-20s\n",p->data[i].name,p->data[i].age,p->data[i].sex,p->data[i].tel);
+	}
+}
+void menu()
+{
+	printf("0.exit     1.add\n");
+	printf("2.del      3.search\n");
+	printf("4.modify   5.show\n");
+}
+int main()
+{
+	int choose;
+	initcontact(&con);
+	do
+	{
+		menu();
+		printf("请选择:>\n");
+		scanf("%d",&choose);
+		switch(choose)
+		{
+			case off:
+				free(con.data);
+				con.data=NULL;
+				printf("退出通讯录\n");
+				break;
+			case add:
+				addcontact(&con);
+				break;
+			case del:
+				delcontact(&con);
+				break;
+			case search:
+				searchcontact(&con);
+				break;
+			case modify:
+				modifycontact(&con);
+				break;
+			case show:
+				showcontact(&con);
+				break;
+			default:
+				printf("选择错误，请重新选择\n");
+				break;
+		}
+	}while(choose);
+	return 0;
+}

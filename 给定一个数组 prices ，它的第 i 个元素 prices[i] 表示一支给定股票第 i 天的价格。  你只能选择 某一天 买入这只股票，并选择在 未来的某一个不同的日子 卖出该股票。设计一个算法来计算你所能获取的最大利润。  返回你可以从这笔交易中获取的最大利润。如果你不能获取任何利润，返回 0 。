@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<string.h>
+int main() {
+    int prices[]={1,45,21,4,5},pricesSize=sizeof(prices)/sizeof(prices[0]),x=0;
+    for(int i=0;i<pricesSize-1;i++)
+    {
+        for(int j=i+1;j<pricesSize;j++)
+        {
+            if(prices[j]-prices[i]>x)
+            x=prices[j]-prices[i];
+        }
+    }
+    printf("%d",x);
+}

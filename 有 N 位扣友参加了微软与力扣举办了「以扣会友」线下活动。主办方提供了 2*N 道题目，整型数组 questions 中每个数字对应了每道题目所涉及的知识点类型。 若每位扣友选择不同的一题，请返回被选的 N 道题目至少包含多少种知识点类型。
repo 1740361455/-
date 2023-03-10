@@ -1,0 +1,71 @@
+#include<stdio.h>
+int main()
+{
+	int questions[]={1,1,1,1,1,4,1,4,4,4,4,4,7,7};
+	int sz=sizeof(questions)/sizeof(questions[0]);
+	int x=0,people=sz/2,c=0,i,j,tmp,a;
+	for(i=0;i<sz-1;i++)
+	{	a=0;
+		for(j=0;j<sz-i-1;j++)
+		{
+			if(questions[j]>questions[j+1])
+			{
+				tmp=questions[j];
+				questions[j]=questions[j+1];
+				questions[j+1]=tmp;
+				a++;
+			}
+		}
+		if(a==0)
+		break;
+	}
+
+	j=1;
+	for(i=0;i<sz-1;i++)
+	{
+		if(questions[i]==questions[i+1])
+		j++;
+		else
+		{
+			if((i+1)==(sz-1))
+			{
+				questions[c]=j;
+				questions[c+1]=1;
+				c+=2;
+			}
+			else
+			{
+				questions[c]=j;
+				j=1;
+				c++;	
+			}	
+		}		
+	}
+	c--;
+		for(i=0;i<c;i++)
+		{	a=0;
+			for(j=0;j<c-i;j++)
+			{	
+				if(questions[j]>questions[j+1])
+				{
+					tmp=questions[j];
+					questions[j]=questions[j+1];
+					questions[j+1]=tmp;
+					a++;
+				}	
+			}
+			if(a==0)
+			break;
+		}
+		for(i=c;i>=0;i--)
+		{
+			x+=questions[i];
+			if(x>=people)
+			{
+				x=c-i+1;
+				break;
+			}	
+		}
+		printf("%d",x);
+	return 0;
+}

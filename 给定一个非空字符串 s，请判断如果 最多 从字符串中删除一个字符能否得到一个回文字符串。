@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<string.h>
+int check(char* s,int left,int right)
+{
+	while(left<=right)
+		{
+			if(s[left]!=s[right])
+			return 0;
+			left++;
+			right--;	
+		}
+		return 1;
+}
+int main()
+{
+	char s[]="sfhs";
+	int left=0,right=strlen(s)-1,x;
+	while(left<=right)
+	{
+		if(s[left]!=s[right])
+		{
+			x=check(s,left+1,right)||check(s,left,right);
+			if(x==1)
+			{
+				
+			}
+			else
+			{
+				printf("no");
+				return 0;
+			}
+		}
+		left++;
+		right--;	
+	}
+	printf("yes");
+	return 0;
+}

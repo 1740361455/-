@@ -1,0 +1,20 @@
+#include<stdio.h>
+int addDigits(int num){
+    int sum=0;
+    if(num>9)
+    {
+    while(num)
+    {
+    sum+=num%10;
+    num/=10;
+    }
+    return addDigits(sum);
+    }
+    else
+    return num;
+}
+int main(){
+	int num=4156,sum;
+	sum=addDigits(num);
+	printf("%d",sum);
+}

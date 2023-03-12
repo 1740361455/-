@@ -1,0 +1,15 @@
+#include<stdio.h>
+int arr[46] = {0};
+int climbStairs(int n) {
+	if (n == 1 || n == 2)
+		return n;
+	if (arr[n] != 0)
+		return arr[n];
+	arr[n] = climbStairs(n - 1) + climbStairs(n - 2);
+	return arr[n];
+}
+int main() {
+	int n = 10, sum = climbStairs(n);
+	printf("%d", sum);
+	return 0;
+}

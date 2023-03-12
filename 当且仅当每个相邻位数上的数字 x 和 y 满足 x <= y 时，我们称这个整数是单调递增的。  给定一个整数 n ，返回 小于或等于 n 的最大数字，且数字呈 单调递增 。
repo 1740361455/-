@@ -1,0 +1,26 @@
+#include<stdio.h>
+int monotoneIncreasingDigits(int n){
+    long num,sum=10;
+        while(sum<=n)
+        {
+            num=sum;
+            if(((n%num)/(num/10))<(n%(num*10)/num))
+        {
+            n=n-num-n%num;
+            while(num!=1)
+            {
+                num/=10;
+                n+=num*9;
+            }
+        }
+         sum*=10;
+        } 
+    return n;
+}
+int main()
+{
+	int n=1000,x;
+	x=monotoneIncreasingDigits(n);
+	printf("%d",x);
+	return 0;
+}

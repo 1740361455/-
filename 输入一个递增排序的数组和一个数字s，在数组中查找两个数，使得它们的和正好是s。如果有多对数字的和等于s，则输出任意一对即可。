@@ -1,0 +1,66 @@
+#include<stdio.h>
+int* twoSum(int* nums, int numsSize, int target, int* p) {
+
+	int left = 0, right = numsSize - 1, i;
+	while (left < right) {
+		int tmp = target - nums[left];
+		for (i = left + 1; i <= right; i++) {
+			if (tmp == nums[i])
+				break;
+			else if (tmp < nums[i]) {
+				right = i - 1;
+				break;
+			}
+		}
+		if (tmp == nums[i])
+			break;
+		left++;
+	}
+
+	p[0] = nums[left];
+	p[1] = nums[i];
+	return p;
+}
+int main() {
+	int nums[] = {14, 15, 16, 22, 53, 60}, numsSize = 6, target = 74, p[] = {0};
+	twoSum(nums, numsSize, target, p);
+	printf("%d %d", p[0], p[1]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#include<stdio.h>
+int* twoSum(int* nums, int numsSize, int target, int* p){
+    int left=0,right=numsSize-1,tmp=nums[left]+nums[right];
+    while(tmp!=target)
+    {
+        if(tmp>target)
+        {
+            right--;
+            tmp=nums[left]+nums[right];
+        }
+        
+        else if(tmp<target)
+        {
+            left++;
+            tmp=nums[left]+nums[right];
+        }
+    }
+    p[0]=nums[left];
+    p[1]=nums[right];
+    return p;
+}
+int main() {
+	int nums[] = {14, 15, 16, 22, 53, 60}, numsSize = 6, target = 38, p[] = {0};
+	twoSum(nums, numsSize, target, p);
+	printf("%d %d", p[0], p[1]);
+}

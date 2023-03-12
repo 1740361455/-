@@ -1,0 +1,18 @@
+#include<stdio.h>
+int main()
+{
+	int nums[]={0,1,2,3,4},numsSize=sizeof(nums)/sizeof(nums[0]),n=0;
+	while(n<numsSize)
+    {
+        if(nums[n]>n)
+        n=nums[n];
+        else if(nums[n]<n)
+        n++;
+        else
+        break;
+    }
+    if(n>=numsSize)
+    printf("false");
+    else
+    printf("%d",n);
+}

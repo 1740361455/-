@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<stdlib.h>
+int min_p(int p1,int p2,int p3)
+{
+	p1>p2?p1=p2:p1;
+	p1>p3?p1=p3:p1;
+	return p1;
+}
+int main(){
+	int n=10;
+	int* p=(int*)malloc(n*sizeof(int));
+	int i,p1=0,p2=0,p3=0;
+	p[0]=1;
+	for(i=1;i<n;i++)
+	{
+		p[i]=min_p(p[p1]*2,p[p2]*3,p[p3]*5);
+		if(p[i]==p[p1]*2)
+		p1++;
+		if(p[i]==p[p2]*3)
+		p2++;
+		if(p[i]==p[p3]*5)
+		p3++;
+	}
+	printf("%d",p[i-1]);
+	free(p);
+	p=NULL;
+    return 0;
+}

@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<string.h>
+int lengthOfLongestSubstring(char * s){
+    int left=0,right=0,max=1,min=1,i;
+    if(strlen(s)==0)
+    return 0;
+    while(right<strlen(s)-1)
+    {
+        for(i=left;i<=right;i++)
+        {
+            if(s[i]==s[right+1])
+            break;
+        }
+        if(i==right+1)
+        {
+            min=right-left+2;
+            right++;
+        }
+        else
+        {
+            left=i+1;
+            right+=1;
+        }
+        if(min>max)
+        max=min;
+    }
+    return max;
+}
+int main()
+{
+	char s[]="add ffgfdg 24g";
+	int n=lengthOfLongestSubstring(s);
+	printf("%d",n);
+	return 0;
+}

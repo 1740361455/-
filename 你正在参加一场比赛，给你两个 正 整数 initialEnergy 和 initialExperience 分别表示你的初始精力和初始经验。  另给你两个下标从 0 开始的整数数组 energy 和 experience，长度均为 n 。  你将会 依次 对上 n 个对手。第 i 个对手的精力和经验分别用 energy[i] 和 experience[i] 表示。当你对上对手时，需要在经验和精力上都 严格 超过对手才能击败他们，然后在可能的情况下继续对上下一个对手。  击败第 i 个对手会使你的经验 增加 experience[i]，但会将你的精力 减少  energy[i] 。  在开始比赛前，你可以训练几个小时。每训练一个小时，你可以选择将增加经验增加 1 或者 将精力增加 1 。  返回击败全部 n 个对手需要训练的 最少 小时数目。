@@ -1,0 +1,28 @@
+#include<stdio.h>
+int minNumberOfHours(int initialEnergy, int initialExperience, int* energy, int energySize, int* experience, int experienceSize){
+    int need=0;
+    for(int i=0;i<energySize;i++)
+    need+=energy[i];
+    need>=initialEnergy?(need=need-initialEnergy+1):(need=0);
+    int x=0;
+    for(int i=0;i<experienceSize;i++)
+    {
+        initialExperience<=experience[i]?(x=experience[i]-initialExperience+1):x;
+        if(x!=0)
+        {
+            initialExperience+=x;
+            need+=x;
+            x=0;
+        }
+        initialExperience+=experience[i];
+    }
+    return need;
+}
+int main()
+{
+	int initialEnergy=5,initialExperience=3,energySize=4,experienceSize=4;
+	int energy[]={1,4,3,2},experience[]={2,6,3,1};
+	int need=minNumberOfHours(initialEnergy,initialExperience,energy,energySize,experience,experienceSize);
+	printf("%d",need);
+	return 0;
+}

@@ -1,0 +1,20 @@
+#include<stdio.h>
+int isPowerOfTwo(int n){
+    if(n==0)
+    return false;
+    while(n%2==0)
+    {
+      n/=2;  
+    }
+    if(n==1)
+    return 1;
+    else
+    return 0;
+}
+int main()
+{
+	int n=155;
+	int result=isPowerOfTwo(n);
+	printf("%d",result);
+	return 0;
+}

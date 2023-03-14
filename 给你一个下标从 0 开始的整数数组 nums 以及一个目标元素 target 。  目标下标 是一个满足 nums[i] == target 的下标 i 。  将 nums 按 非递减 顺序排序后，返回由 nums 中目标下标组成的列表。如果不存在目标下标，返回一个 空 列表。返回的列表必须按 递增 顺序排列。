@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+ int cmp(const void* e1,const void* e2)
+ {
+     return *(int*)e1-*(int*)e2;
+ }
+int targetIndices(int* nums, int numsSize, int target, int* p){
+    qsort(nums,numsSize,sizeof(int),cmp);
+    int left=0,right=numsSize-1,mid,n1=0,n2=0,n=0;
+    while(left<=right)
+    {
+        mid=(left+right)/2;
+        if(nums[mid]>target)
+        right=--mid;
+        else if(nums[mid]<target)
+        left=++mid;
+        else
+        break;
+    }
+    if(left>right)
+	return n;
+    for(n=mid;n<numsSize-1;n++)
+    {
+        if(nums[mid]==nums[mid+n1+1])
+        n1++;
+        else
+        break;
+    }
+    for(n=mid;n>0;n--)
+    {
+        if(nums[mid]==nums[mid-n2-1])
+        n2++;
+        else
+        break;
+    }
+    n=0;
+    for(int i=mid-n2;i<=mid+n1;i++)
+    {
+        p[n]=i;
+        n++;
+    }
+    return n;
+}
+int main()
+{
+	int* p=(int*)malloc(sizeof(int)*101);
+	int nums[]={1,2,5,2,3},numsSize=5,target=2;
+	int n=targetIndices(nums,numsSize,target,p);
+	for(int i=0;i<n;i++)
+	printf("%d ",p[i]);
+	free(p);
+	p=NULL;
+	return 0;
+}

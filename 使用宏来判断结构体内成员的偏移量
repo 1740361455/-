@@ -1,0 +1,14 @@
+#include<stdio.h>
+struct str
+{
+	char a;
+	int b;
+	char c;
+};
+#define OFFSETOF(struct_name,member_name) (int)&(((struct_name*)0)->member_name)
+int main()
+{
+	printf("%d\n", OFFSETOF(struct str, a));
+	printf("%d\n", OFFSETOF(struct str, b));
+	printf("%d\n", OFFSETOF(struct str, c));
+}

@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+char findTheDifference(char * s, char * t){
+    int* sp=(int*)malloc(sizeof(int)*123);
+    int* tp=(int*)malloc(sizeof(int)*123);
+    int a=97;
+    int slen=strlen(s);
+    for(int i=0;i<slen;i++)
+    sp[s[i]]++;
+    for(int i=0;i<slen+1;i++)
+    tp[t[i]]++;
+    while(sp[a]==tp[a])
+    {
+        a++;
+    }
+    free(sp);
+    sp=NULL;
+    free(tp);
+    tp=NULL;
+    return a;
+}
+int main() {
+	char s[]="abcd";
+	char t[]="cdaeb";
+	char n=findTheDifference(s,t);
+	printf("%c",n);
+	return 0;
+}

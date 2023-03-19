@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct student
+{
+	char data;
+	struct student* next;
+}stu;
+int main() {
+	int n = 4;
+	char arr[] = "abcd";
+	stu* l=(stu*)malloc(sizeof(stu));
+	stu* p;
+	l->next = NULL;
+	for (int i = 0; i < n; i++)
+	{
+		p = (stu*)malloc(sizeof(stu));
+		p->data = arr[i];
+		p->next = l->next;
+		l->next = p;
+	}
+	free(l);
+	l = NULL;
+	free(p);
+	p = NULL;
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct student
+{
+	char data;
+	struct student* next;
+}stu;
+int main() {
+	int n = 4;
+	char arr[] = "abcd";
+	stu* l = (stu*)malloc(sizeof(stu));
+	stu* p;
+	stu* r;
+	l->next = NULL;
+	r = l;
+	for (int i = 0; i < n; i++)
+	{
+		p = (stu*)malloc(sizeof(stu));
+		p->data = arr[i];
+		p->next = NULL;
+		r->next = p;
+		r = p;
+	}
+	free(l);
+	l = NULL;
+	free(p);
+	p = NULL;
+	return 0;
+}

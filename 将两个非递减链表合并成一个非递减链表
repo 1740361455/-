@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct student {
+	char data;
+	struct student* next;
+} stu;
+int main() {
+	int n = 4;
+	char arr[] = "abcd";
+	char brr[] = "bdfg";
+	stu* l1 = (stu*)malloc(sizeof(stu));
+	stu* l2 = (stu*)malloc(sizeof(stu));
+	stu* p1;
+	stu* p2;
+	stu* r1;
+	stu* r2;
+	l1->next = NULL;
+	l2->next = NULL;
+	r1 = l1;
+	r2 = l2;
+	for (int i = 0; i < n; i++) {
+		p1 = (stu*)malloc(sizeof(stu));
+		p1->data = arr[i];
+		p1->next = NULL;
+		r1->next = p1;
+		r1 = p1;
+	}
+	for (int i = 0; i < n; i++) {
+		p2 = (stu*)malloc(sizeof(stu));
+		p2->data = brr[i];
+		p2->next = NULL;
+		r2->next = p2;
+		r2 = p2;
+	}
+	p1=l1->next;
+	p2=l2->next;
+	stu* p3;
+	stu* l3;
+	p3=l3=l1;
+	while(p1&&p2)
+	{
+		if(p1->data>p2->data)
+		{
+			p3->next=p2;
+			p3=p2;
+			p2=p2->next;
+		}
+		else
+		{
+			p3->next=p1;
+			p3=p1;
+			p1=p1->next;
+		}
+	}
+	while(p1)
+	{
+		p3->next=p1;
+		p3=p1;
+		p1=p1->next;
+	}
+	while(p2)
+	{
+		p3->next=p2;
+		p3=p2;
+		p2=p2->next;
+	}
+	printf("%d",l3->next->next->next->next->data);
+	free(l1);
+	l1 = NULL;
+	free(p1);
+	p1 = NULL;
+	free(l2);
+	l2 = NULL;
+	free(p2);
+	p2 = NULL;
+	return 0;
+}

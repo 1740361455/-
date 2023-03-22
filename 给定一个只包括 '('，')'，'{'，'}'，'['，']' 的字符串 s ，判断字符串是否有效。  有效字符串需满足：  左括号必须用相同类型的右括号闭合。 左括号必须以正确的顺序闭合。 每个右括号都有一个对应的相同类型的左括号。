@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+bool isValid(char * s){
+    int n=1,i=0;
+    char* p=(char*)calloc(strlen(s)+1,sizeof(char));
+    for(i;i<strlen(s);i++)
+    {
+        if(s[i]=='('||s[i]=='{'||s[i]=='[')
+        {
+            p[n]=s[i];
+            n++;
+        }
+        else if((s[i]==')'&&p[n-1]=='(')||(s[i]=='}'&&p[n-1]=='{')||(s[i]==']'&&p[n-1]=='['))
+        n--;
+        else
+        break;
+    }
+    if(n==1&&i==strlen(s))
+    return true;
+    else
+    return false;
+}
+int main()
+{
+	char* s="(){}";
+	int a=isValid(s);
+	printf("%d",a);
+}

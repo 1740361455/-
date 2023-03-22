@@ -1,0 +1,16 @@
+#include<stdio.h>
+int removeDuplicates(int* nums, int numsSize){
+    int i=0,j=0;
+    for(;j<numsSize-1;j++)
+    {
+        if(nums[j]<nums[j+1])
+        nums[++i]=nums[j+1]; 
+    }
+    return ++i;
+}
+int main()
+{
+	int nums[]={1,1,2,2,3,3},numSize=sizeof(nums)/sizeof(nums[0]);
+	int n=removeDuplicates(nums,numSize);
+	printf("%d",n);
+}

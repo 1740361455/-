@@ -1,0 +1,11 @@
+struct ListNode* swapPairs(struct ListNode* head){
+    struct ListNode* l=head;
+    while(head&&head->next)
+    {
+        int tmp=head->val;
+        head->val=head->next->val;
+        head->next->val=tmp;
+        head=head->next->next;
+    }
+    return l;
+}

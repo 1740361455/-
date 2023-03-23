@@ -1,0 +1,14 @@
+bool isPalindrome(struct ListNode* head){
+    while(head&&head->next)
+    {
+        struct ListNode* l=head;
+        while(l->next->next)
+        l=l->next;
+        if(head->val!=l->next->val)
+        return false;
+        else
+        l->next=NULL;
+        head=head->next;
+    }
+    return true;
+}

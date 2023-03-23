@@ -1,0 +1,23 @@
+struct ListNode* insertionSortList(struct ListNode* head){
+    struct ListNode* x=head;
+    struct ListNode* l=head;
+    while(head)
+    {
+        int n=0;
+        while(l->next)
+        {
+            if(l->val>l->next->val)
+            {
+                int tmp=l->val;
+                l->val=l->next->val;
+                l->next->val=tmp;
+                n=1;
+            }
+            l=l->next;
+        }
+        if(n==0)
+        break;
+        l=head;
+    }
+    return x;
+}

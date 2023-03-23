@@ -1,0 +1,17 @@
+struct ListNode* reverseList(struct ListNode* head){
+    if(head==NULL)
+    return head;
+    struct ListNode* last=(struct ListNode*)malloc(sizeof(struct ListNode));
+    last->val=head->val;
+    last->next=NULL;
+    head=head->next;
+    while(head)
+    {
+        struct ListNode* x=(struct ListNode* )malloc(sizeof(struct ListNode));
+        x->val=head->val;
+        x->next=last;
+        last=x;
+        head=head->next;
+    }
+    return last;
+}

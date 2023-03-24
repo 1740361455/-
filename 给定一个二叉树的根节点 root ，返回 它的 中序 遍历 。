@@ -1,0 +1,14 @@
+int n[101];
+void ergodic(struct TreeNode* root,int* returnSize)
+{
+    if(root==NULL)
+    return ;
+    ergodic(root->left,returnSize);
+    n[(*returnSize)++]=root->val;
+    ergodic(root->right,returnSize);
+}
+int* inorderTraversal(struct TreeNode* root, int* returnSize){
+    *returnSize=0;
+    ergodic(root,returnSize);
+    return n;
+}

@@ -1,0 +1,67 @@
+struct ListNode* oddEvenList(struct ListNode* head){
+    if(head==NULL||head->next==NULL||head->next->next==NULL)
+    return head;
+    struct ListNode* first=head;
+    head=head->next;
+    struct ListNode* second=head;
+    head=head->next;
+    struct ListNode* first1=first;
+    struct ListNode* second1=second;
+    while(head&&head->next)
+    {
+        first->next=head;
+        first=first->next;
+        head=head->next;
+        second->next=head;
+        second=second->next;
+        head=head->next;
+    }
+    if(head)
+    {
+        first->next=head;
+        first=first->next;    
+    }
+    second->next=NULL;
+    first->next=second1;
+    return first1;
+}
+
+
+
+
+
+
+
+
+
+struct ListNode* oddEvenList(struct ListNode* head){
+    if(head==NULL||head->next==NULL||head->next->next==NULL)
+    return head;
+    struct ListNode* first=head;
+    head=head->next;
+    struct ListNode* second=head;
+    head=head->next;
+    struct ListNode* first1=first;
+    struct ListNode* second1=second;
+    int n=0;
+    while(head)
+    {
+        if(n==0)
+        {
+            first->next=head;
+            first=first->next;
+            head=head->next;
+            n=1;
+        }
+        else
+        {
+            second->next=head;
+            second=second->next;
+            head=head->next;
+            n=0;
+        }
+    }
+    second->next=NULL;
+    first->next=second1;
+    return first1;
+}

@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<string.h>
+int countSubstrings(char * s, char * t) {
+	int n = strlen(s);
+	int m = strlen(t);
+	int count = 0;
+	int max;
+	n > m ? (max = m) : (max = n);
+	for (int a = 1; a <= max; a++) {
+		for (int b = 0; b <= n - a; b++) {
+			for (int c = 0; c <= m - a; c++) {
+				int x = 1;
+				int y = 0;
+				int d = b;
+				int e = c;
+				while (x <= a) {
+					if (s[d] != t[e])
+						y++;
+					d++;
+					e++;
+					x++;
+				}
+				if (y == 1)
+					count++;
+			}
+		}
+	}
+	return count;
+}
+int main() {
+	char* s = "ab";
+	char* t = "accf";
+	int count = countSubstrings(s,t);
+	printf("%d", count);
+	return  0;
+}

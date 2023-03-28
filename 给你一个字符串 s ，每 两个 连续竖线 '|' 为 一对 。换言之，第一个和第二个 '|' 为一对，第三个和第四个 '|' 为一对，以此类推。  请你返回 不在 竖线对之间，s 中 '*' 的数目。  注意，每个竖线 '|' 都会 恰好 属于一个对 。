@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<string.h>
+int countAsterisks(char * s){
+    int count=0,sign=0;
+    for(int i=0;i<strlen(s);i++)
+    {
+        if(sign==0&&s[i]=='*')
+        count++;
+        else if(sign==1&&s[i]=='|')
+        sign=0;
+        else if(sign==0&&s[i]=='|')
+        sign=1;
+    }
+    return count;
+}
+int main() {
+	char* s="ab|dad|***";
+	int count=countAsterisks(s);
+    printf("%d",count);
+	return  0;
+}

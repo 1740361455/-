@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 int main() {
-	char strs[4][4]={"cba","daf","ghi"};
+	char strs[][4]={"cba","daf","ghi"};
     int count=0;
     int sz=strlen(strs[0]);
     int strsSize=sizeof(strs)/sizeof(strs[0])-1;

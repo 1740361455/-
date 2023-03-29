@@ -1,0 +1,23 @@
+#include<stdio.h>
+int countVowelStrings(int n){
+    int count=0;
+    int arr[5]={1,1,1,1,1};
+    for(int i=1;i<n;i++)
+    {
+        for(int j=0;j<5;j++)
+        {
+           for(int m=j+1;m<5;m++)
+           arr[j]+=arr[m];
+        }
+    }
+    for(int i=0;i<5;i++)
+    count+=arr[i];
+    return count;
+}
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	int count=countVowelStrings(n);
+	printf("%d",count);
+}

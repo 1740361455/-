@@ -1,0 +1,26 @@
+int arithmeticTriplets(int* nums, int numsSize, int diff){
+    int count=0;
+    for(int i=0;i<numsSize-2;i++)
+    {
+        int tmp1=nums[i]+diff;
+        int tmp2=tmp1+diff;
+        for(int j=i+1;j<numsSize-1;j++)
+        {
+            if(tmp1==nums[j])
+            {
+                for(int n=j+1;n<numsSize;n++)
+                {
+                    if(tmp2==nums[n])
+                    {
+                        count++;
+                        break;     
+                    }
+                }
+                break;
+            }
+            else if(tmp1<nums[j])
+            break;
+        }
+    }
+    return count;
+}

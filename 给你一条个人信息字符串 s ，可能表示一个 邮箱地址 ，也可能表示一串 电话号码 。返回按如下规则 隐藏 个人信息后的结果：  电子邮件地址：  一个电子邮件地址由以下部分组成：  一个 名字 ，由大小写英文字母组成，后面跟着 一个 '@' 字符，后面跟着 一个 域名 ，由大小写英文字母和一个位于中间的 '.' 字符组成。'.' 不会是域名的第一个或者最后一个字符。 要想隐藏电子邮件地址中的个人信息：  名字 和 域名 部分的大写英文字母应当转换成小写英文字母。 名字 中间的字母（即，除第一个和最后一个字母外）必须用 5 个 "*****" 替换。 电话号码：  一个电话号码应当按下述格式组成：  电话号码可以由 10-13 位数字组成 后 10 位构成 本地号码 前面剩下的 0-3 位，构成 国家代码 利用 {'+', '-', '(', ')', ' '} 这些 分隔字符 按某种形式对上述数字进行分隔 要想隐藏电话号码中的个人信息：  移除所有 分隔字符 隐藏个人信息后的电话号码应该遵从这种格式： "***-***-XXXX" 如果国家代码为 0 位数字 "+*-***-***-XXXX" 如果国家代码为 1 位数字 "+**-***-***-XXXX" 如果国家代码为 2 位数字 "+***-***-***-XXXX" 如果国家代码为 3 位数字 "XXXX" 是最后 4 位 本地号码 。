@@ -1,0 +1,28 @@
+char * maskPII(char * s){
+    char* data=(char*)calloc(46,sizeof(char));
+    if(isalpha(s[0]))
+    {
+        char* sign="@";
+        char* tmp=strchr(s,sign);
+        int sz=strlen(s);
+        for(int i=0;i<sz;i++)
+        {
+            if(isalpha(s[i]))
+            s[i]=tolower(s[i]);
+        }
+        sprintf(data,"%c%s%s",s[0],"*****",tmp-1);
+        return data;
+    }
+    int sz=strlen(s);
+    char tel[14];
+    int j=0;
+    char* sign[]={"","+*-","+**-","+***-"};
+    for(int i=0;i<sz;i++)
+    {
+        if(isdigit(s[i]))
+        tel[j++]=s[i];  
+    }
+    tel[j]='\0';
+    sprintf(data,"%s%s%s",sign[j-10],"***-***-",tel+j-4);
+    return data;
+}

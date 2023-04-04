@@ -1,0 +1,9 @@
+int add(int a, int b){
+    while(b)
+    {
+        int tmp=(unsigned int)(a&b)<<1;
+        a^=b;
+        b=tmp;
+    }
+    return a;
+}

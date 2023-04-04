@@ -1,0 +1,28 @@
+int lengthOfLongestSubstring(char * s){
+    if(strlen(s)==0)
+    return 0;
+    int left=0;
+    int right=1;
+    int sz=strlen(s);
+    int max=1;
+    int i=0;
+    for(;right<sz;right++)
+    {
+        int min=0;
+        for(i=left;i<right;i++)
+        {
+            if(s[i]!=s[right])
+            min++;
+            else
+            {
+                min=right-i;
+                left=i+1;
+                break;  
+            }
+        }
+        if(i==right)
+        min++;
+        max>min?max:(max=min);
+    }
+    return max;
+}

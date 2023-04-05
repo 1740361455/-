@@ -1,0 +1,21 @@
+char* replaceSpace(char* s){
+    if(strlen(s)==0)
+    return s;
+    char* p=malloc(sizeof(char)*(strlen(s)+1)*3);
+    char* pp=p;
+    char* tmp="%20";
+    for(int i=0;i<strlen(s);i++)
+    {
+        if(s[i]==' ')
+        {
+           sprintf(p,"%s",tmp);
+           p+=3; 
+        }
+        else
+        {
+            sprintf(p,"%c",s[i]);
+            p++;
+        }
+    }
+    return pp;
+}

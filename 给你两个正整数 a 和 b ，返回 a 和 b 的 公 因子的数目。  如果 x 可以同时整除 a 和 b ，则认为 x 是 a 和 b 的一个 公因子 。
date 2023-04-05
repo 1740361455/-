@@ -1,0 +1,17 @@
+int RollingDivision(int a,int b)
+{
+    int c=b;
+    b=a%b;
+    a=c;
+    if(b==0)
+    return c;
+    return RollingDivision(a,b);
+}
+int commonFactors(int a, int b){
+    int n=RollingDivision(a,b);
+    int count=0;
+    for(int i=1;i<n;i++)
+    if(a%i==0&&b%i==0)
+    count++;
+    return count+1;
+}

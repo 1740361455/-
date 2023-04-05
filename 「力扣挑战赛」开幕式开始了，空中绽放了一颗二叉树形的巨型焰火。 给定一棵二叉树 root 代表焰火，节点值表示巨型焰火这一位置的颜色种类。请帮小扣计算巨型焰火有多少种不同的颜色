@@ -1,0 +1,17 @@
+void ergodic(struct TreeNode* root,int* type)
+{
+    if(root==NULL)
+    return;
+    type[root->val]++;
+    ergodic(root->left,type);
+    ergodic(root->right,type);
+}
+int numColor(struct TreeNode* root){
+    int* type=(int*)calloc(1001,sizeof(int));
+    int count=0;
+    ergodic(root,type);
+    for(int i=0;i<1001;i++)
+    if(type[i]>0)
+    count++;
+    return count;
+}

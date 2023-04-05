@@ -1,0 +1,17 @@
+struct ListNode* deleteNode(struct ListNode* head, int val){
+    if(head==NULL)
+    return head;
+    if(head->val==val)
+    return head->next;
+    struct ListNode* p=head;
+    while(p->next)
+    {
+        if(p->next->val==val)
+        {
+            p->next=p->next->next;
+            break;
+        }
+        p=p->next;
+    }
+    return head;
+}

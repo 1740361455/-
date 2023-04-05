@@ -1,0 +1,16 @@
+int cmp(const void* e1,const void* e2)
+{
+    return *(int*)e1-*(int*)e2;
+}
+double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size){
+    int* p=(int*)malloc(sizeof(int)*(nums1Size+nums2Size));
+    for(int i=0;i<nums1Size;i++)
+    p[i]=nums1[i];
+    for(int i=nums1Size;i<nums1Size+nums2Size;i++)
+    p[i]=nums2[i-nums1Size];
+    qsort(p,nums1Size+nums2Size,sizeof(int),cmp);
+    if((nums1Size+nums2Size)%2==1)
+    return p[(nums1Size+nums2Size+1)/2-1];
+    else
+    return ((double)p[(nums1Size+nums2Size)/2-1]+(double)p[(nums1Size+nums2Size)/2])/2;
+}

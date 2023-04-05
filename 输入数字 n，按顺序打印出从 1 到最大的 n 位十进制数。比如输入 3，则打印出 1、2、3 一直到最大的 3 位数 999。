@@ -1,0 +1,10 @@
+int* printNumbers(int n, int* returnSize){
+    int sum=0;
+    for(int i=1;i<=n;i++)
+    sum=sum*10+9;
+    int* p=(int*)malloc(sizeof(int)*sum);
+    for(int i=0;i<sum;i++)
+    p[i]=i+1;
+    *returnSize=sum;
+    return p;
+}

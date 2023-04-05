@@ -1,0 +1,6 @@
+int maximum(int a, int b){
+    long c=(long)a-(long)b;
+    while(c>>63)
+    return b;
+    return a;
+}

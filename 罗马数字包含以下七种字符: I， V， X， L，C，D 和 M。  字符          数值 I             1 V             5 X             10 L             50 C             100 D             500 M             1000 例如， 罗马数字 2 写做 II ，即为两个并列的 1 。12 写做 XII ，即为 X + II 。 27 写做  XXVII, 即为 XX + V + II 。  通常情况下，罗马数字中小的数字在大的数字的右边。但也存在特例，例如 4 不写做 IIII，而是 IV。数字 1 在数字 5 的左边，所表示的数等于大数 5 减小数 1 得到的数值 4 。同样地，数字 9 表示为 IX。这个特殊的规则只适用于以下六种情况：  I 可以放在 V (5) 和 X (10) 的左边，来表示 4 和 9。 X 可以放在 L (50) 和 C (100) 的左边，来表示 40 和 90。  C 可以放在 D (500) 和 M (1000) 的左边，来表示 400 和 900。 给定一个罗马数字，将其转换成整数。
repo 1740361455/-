@@ -1,0 +1,51 @@
+int romanToInt(char * s){
+    int num=0;
+    for(int i=strlen(s)-1;i>=0;i--)
+    {
+        if(i>0&&s[i]=='M'&&s[i-1]=='C')
+        {
+            num+=900;
+            i--;
+        }
+        else if(s[i]=='M')
+        num+=1000;
+        else if(i>0&&s[i]=='D'&&s[i-1]=='C')
+        {
+            num+=400;
+            i--;
+        }
+        else if(s[i]=='D')
+        num+=500;
+        else if(i>0&&s[i]=='C'&&s[i-1]=='X')
+        {
+            num+=90;
+            i--;
+        }
+        else if(s[i]=='C')
+        num+=100;
+        else if(i>0&&s[i]=='L'&&s[i-1]=='X')
+        {
+            num+=40;
+            i--;
+        }
+        else if(s[i]=='L')
+        num+=50;
+        else if(i>0&&s[i]=='X'&&s[i-1]=='I')
+        {
+            num+=9;
+            i--;
+        }
+        else if(s[i]=='X')
+        num+=10;
+        else if(i>0&&s[i]=='V'&&s[i-1]=='I')
+        {
+            num+=4;
+            i--;
+        }
+        else if(s[i]=='V')
+        num+=5;
+        else
+        num+=1;
+    }
+    return num;
+}

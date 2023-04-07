@@ -1,0 +1,22 @@
+char * baseNeg2(int n){
+    if(n==0)
+    return "0";
+    if(n==1)
+    return "1";
+    char* s=(char*)calloc(32,sizeof(char));
+    int num=0;
+    while(n)
+    {
+        int tmp=n&1;
+        s[num++]='0'+tmp;
+        n-=tmp;
+        n/=-2;
+    }
+    for(int l=0,r=num-1;l<r;l++,r--)
+    {
+        char tmp=s[l];
+        s[l]=s[r];
+        s[r]=tmp;
+    }
+    return s;
+}

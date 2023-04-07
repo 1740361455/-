@@ -1,0 +1,12 @@
+int getMinimumTime(int* time, int timeSize, int** fruits, int fruitsSize, int* fruitsColSize, int limit){
+    int sum=0;
+    int n=0;
+    for(int i=0;i<fruitsSize;i++)
+    {
+        n=fruits[i][1]/limit;
+        if(fruits[i][1]%limit!=0)
+        n++;
+        sum+=time[fruits[i][0]]*n;
+    }
+    return sum;
+}

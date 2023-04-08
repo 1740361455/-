@@ -1,0 +1,17 @@
+int singleNumber(int* nums, int numsSize){
+    int* p=(int*)calloc(32,sizeof(int));
+    unsigned int falg=1;
+    int n=0;
+    for(int i=0;i<32;i++)
+    {
+        for(int j=0;j<numsSize;j++)
+        {
+            if((nums[j]&falg)!=0)
+            p[i]++;
+        }
+        if(p[i]%3==1)
+        n=(n|falg);
+        falg=(falg<<1);
+    }
+    return n;
+}

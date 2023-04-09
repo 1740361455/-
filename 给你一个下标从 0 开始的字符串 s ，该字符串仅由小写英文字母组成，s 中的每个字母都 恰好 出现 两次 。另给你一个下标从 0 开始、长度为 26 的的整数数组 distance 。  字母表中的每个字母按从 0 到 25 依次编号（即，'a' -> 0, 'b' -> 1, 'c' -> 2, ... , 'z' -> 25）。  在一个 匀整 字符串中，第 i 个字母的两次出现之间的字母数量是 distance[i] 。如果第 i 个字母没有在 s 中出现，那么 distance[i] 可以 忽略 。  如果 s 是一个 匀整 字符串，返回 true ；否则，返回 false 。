@@ -1,0 +1,26 @@
+bool checkDistances(char * s, int* distance, int distanceSize){
+    for(int i=0;i<distanceSize;i++)
+    {
+        char c=97+i;
+        for(int j=0;j<strlen(s);j++)
+        {
+            if(c==s[j])
+            {
+                int n=0;
+                for(int m=j+1;m<strlen(s);m++)
+                {
+                    if(c==s[m])
+                    {
+                        n=m-j-1;
+                        break;
+                    }
+                }
+                if(n!=distance[i])
+                return false;
+                else
+                break;
+            }
+        }
+    }
+    return true;
+}

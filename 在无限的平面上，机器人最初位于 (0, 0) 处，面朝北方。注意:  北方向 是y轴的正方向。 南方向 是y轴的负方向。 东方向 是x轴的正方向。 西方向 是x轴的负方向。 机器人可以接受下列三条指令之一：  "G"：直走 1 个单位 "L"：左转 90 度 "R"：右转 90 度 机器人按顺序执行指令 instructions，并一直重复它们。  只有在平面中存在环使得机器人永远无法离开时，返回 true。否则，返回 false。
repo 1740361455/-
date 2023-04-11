@@ -1,0 +1,48 @@
+bool isRobotBounded(char * instructions){
+    int n=0;
+    int x=0;
+    int y=0;
+    int num=4;
+    while(num--)
+    {
+        for(int i=0;i<strlen(instructions);i++)
+        {
+            if(instructions[i]=='L')
+            {
+                if(n==0)
+                n=3;
+                else if(n==1)
+                n=0;
+                else if(n==2)
+                n=1;
+                else
+                n=2;
+            }
+            else if(instructions[i]=='R')
+            {
+                if(n==0)
+                n=1;
+                else if(n==1)
+                n=2;
+                else if(n==2)
+                n=3;
+                else
+                n=0;
+            }
+            else
+            {
+                if(n==0)
+                y++;
+                else if(n==1)
+                x++;
+                else if(n==2)
+                y--;
+                else
+                x--;
+            }
+        }
+    }
+    if(x==0&&y==0)
+    return true;
+    return false;
+}

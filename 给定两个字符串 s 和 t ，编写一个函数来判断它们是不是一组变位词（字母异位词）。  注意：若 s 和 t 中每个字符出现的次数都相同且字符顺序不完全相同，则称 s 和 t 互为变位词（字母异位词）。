@@ -1,0 +1,13 @@
+int cmp(const void* e1,const void* e2)
+{
+    return *(char*)e1-*(char*)e2;
+}
+bool isAnagram(char * s, char * t){
+    if(strcmp(s,t)==0)
+    return false;
+    qsort(s,strlen(s),sizeof(char),cmp);
+    qsort(t,strlen(t),sizeof(char),cmp);
+    if(strcmp(s,t)==0)
+    return true;
+    return false;
+}

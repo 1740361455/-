@@ -1,0 +1,23 @@
+bool* camelMatch(char ** queries, int queriesSize, char * pattern, int* returnSize){
+    bool *str = (bool *)calloc(queriesSize, sizeof(bool));
+    int sz=strlen(pattern)-1;
+    for(int i=0;i<queriesSize;i++)
+    {
+        int p=0;
+        int j=0;
+        for(;j<strlen(queries[i]);j++)
+        {
+            if(p>sz+1||(queries[i][j]>=65&&queries[i][j]<=90&&queries[i][j]!=pattern[p]))
+            {
+               str[i]=false;
+               break;
+            }
+            if(queries[i][j]==pattern[p])
+            p++;
+        }
+        if(j==strlen(queries[i])&&p==sz+1)
+        str[i]=true;
+    }
+    *returnSize=queriesSize;
+    return str;
+}

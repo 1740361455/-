@@ -1,0 +1,20 @@
+#define max(a,b) a>b?a:b
+void getmax(struct TreeNode* root,int max, int min,int* tmp)
+{
+    if(root==NULL)
+    return ;
+    if(root->val>max)
+    max=root->val;
+    if(root->val<min)
+    min=root->val;
+    getmax(root->left,max,min,tmp);
+    getmax(root->right,max,min,tmp);
+    *(tmp)=max((*tmp),max-min);
+}
+int maxAncestorDiff(struct TreeNode* root){
+    if(root==NULL)
+    return 0;
+    int tmp=0;
+    getmax(root,root->val,root->val,&tmp);
+    return tmp;
+}

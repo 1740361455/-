@@ -1,0 +1,19 @@
+int* countBits(int n, int* returnSize){
+    int* digital=(int*)calloc((n+1),sizeof(int));
+    for(int i=1;i<n+1;i++)
+    {
+        int count=0;
+        int tmp=i;
+        for(int j=0;j<32;j++)
+        {
+            if((tmp&1)==1)
+            count++;
+            tmp=tmp>>1;
+            if(tmp==0)
+            break;
+        }
+        digital[i]=count;
+    }
+    *returnSize=n+1;
+    return digital;
+}

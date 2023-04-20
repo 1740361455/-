@@ -1,0 +1,54 @@
+int days(char* date,int* months)
+{
+    int month=(date[0]-'0')*10+(date[1]-'0');
+    int day=(date[3]-'0')*10+(date[4]-'0');
+    if(month==1)
+    return day;
+    return months[month-2]+day;
+}
+int countDaysTogether(char * arriveAlice, char * leaveAlice, char * arriveBob, char * leaveBob){
+    int months[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+    for(int i=1;i<12;i++)
+    months[i]+=months[i-1];
+    int aa=days(arriveAlice,months);
+    int la=days(leaveAlice,months);
+    int ab=days(arriveBob,months);
+    int lb=days(leaveBob,months);
+    int min=aa>ab?aa:ab;
+    int max=la>lb?lb:la;
+    if(min<=max)
+    return max-min+1;
+    else
+    return 0;
+}
+
+
+
+
+
+
+
+
+int days(char* date)
+{
+    int months[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+    int month=(date[0]-'0')*10+(date[1]-'0');
+    int sum=0;
+    int day=(date[3]-'0')*10+(date[4]-'0');
+    sum+=day;
+    for(int i=0;i<month-1;i++)
+    sum+=months[i];
+    return sum;
+}
+int countDaysTogether(char * arriveAlice, char * leaveAlice, char * arriveBob, char * leaveBob){
+    int aa=days(arriveAlice);
+    int la=days(leaveAlice);
+    int ab=days(arriveBob);
+    int lb=days(leaveBob);
+    int min=aa>ab?aa:ab;
+    int max=la>lb?lb:la;
+    if(min<=max)
+    return max-min+1;
+    else
+    return 0;
+}

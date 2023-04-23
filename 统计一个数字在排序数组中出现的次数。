@@ -1,0 +1,35 @@
+int search(int* nums, int numsSize, int target){
+    if(numsSize==0)
+    return 0;
+    int left=0;
+    int right=numsSize-1;
+    int tmp=0;
+    int count=0;
+    int x=0,y=0;
+    while(left<=right)
+    {
+        tmp=(left+right)/2;
+        if(nums[tmp]==target)
+        break;
+        else if(nums[tmp]<target)
+        left=tmp+1;
+        else
+        right=tmp-1;
+    }
+    if(nums[tmp]!=target)
+    return 0;
+    for(int i=0;;i++)
+    {
+        if(tmp-i>=0)
+        nums[tmp-i]==target?count++:(x=1);
+        else
+        x=1;
+        if(tmp+i<=numsSize-1)
+        nums[tmp+i]==target?count++:(y=1);
+        else
+        y=1;
+        if(x==1&&y==1)
+        break;
+    }
+    return count-1;
+}

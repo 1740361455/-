@@ -1,0 +1,25 @@
+void ergodic(struct TreeNode* root,int* arr,int* n)
+{
+    if(root==NULL)
+    return ;
+    ergodic(root->left,arr,n);
+    arr[(*n)++]=root->val;
+    ergodic(root->right,arr,n);
+}
+bool findTarget(struct TreeNode* root, int k){
+    int* arr=(int*)malloc(sizeof(int)*10000);
+    int count=0;
+    ergodic(root,arr,&count);
+    int left=0;
+    int right=count-1;
+    while(left<right)
+    {
+        if((arr[left]+arr[right])<k)
+        left++;
+        else if((arr[left]+arr[right])>k)
+        right--;
+        else
+        return true;
+    }
+    return false;
+}

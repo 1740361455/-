@@ -1,0 +1,17 @@
+int maxProfit(int* prices, int pricesSize){
+    int left=0;
+    int right=0;
+    int max=0;
+    while(right<pricesSize)
+    {
+        int tmp=prices[right]-prices[left];
+        if(tmp<0)
+        left++;
+        else
+        {
+            max=max>tmp?max:tmp;
+            right++;
+        }
+    }
+    return max;
+}

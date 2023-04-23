@@ -1,0 +1,17 @@
+void find(struct TreeNode* root,int k,int* res,int* count)
+{
+    if(root!=NULL)
+    {
+        find(root->right,k,res,count);
+        (*count)++;
+        if(*count==k)
+        *res=root->val;
+        find(root->left,k,res,count);
+    }
+}
+int kthLargest(struct TreeNode* root, int k){
+    int res=0;
+    int count=0;
+    find(root,k,&res,&count);
+    return res;
+}

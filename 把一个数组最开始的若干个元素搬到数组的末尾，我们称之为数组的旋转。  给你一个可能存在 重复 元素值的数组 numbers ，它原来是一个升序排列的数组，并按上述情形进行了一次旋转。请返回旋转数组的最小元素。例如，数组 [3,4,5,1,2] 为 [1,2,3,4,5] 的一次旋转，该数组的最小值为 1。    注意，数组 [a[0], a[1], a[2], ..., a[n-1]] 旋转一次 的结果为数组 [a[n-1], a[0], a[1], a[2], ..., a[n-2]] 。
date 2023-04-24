@@ -1,0 +1,32 @@
+int minArray(int* numbers, int numbersSize){
+    int left=0;
+    int right=numbersSize-1;
+    int tmp;
+    int min1=numbers[numbersSize-1]>numbers[0]?numbers[0]:numbers[numbersSize-1];
+    int min2=min1;
+    while(left<=right)
+    {
+        tmp=(left+right)/2;
+        if(numbers[tmp]>min1)
+        left++;
+        else
+        {
+            min1=numbers[tmp];
+            right--;
+        }
+    }
+    left=0;
+    right=numbersSize-1;
+    while(left<=right)
+    {
+        tmp=(left+right)/2;
+        if(numbers[tmp]>=min2)
+        left++;
+        else
+        {
+            min2=numbers[tmp];
+            right--;
+        }
+    }
+    return min1>min2?min2:min1;
+}

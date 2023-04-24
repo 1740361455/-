@@ -1,0 +1,11 @@
+int arr[101];
+int numWays(int n){
+    if(n==0)
+    return 1;
+    if(n==1||n==2)
+    return n;
+    if(arr[n]!=0)
+    return arr[n];
+    arr[n]=(numWays(n-1)+numWays(n-2))%1000000007;
+    return arr[n]%(1000000007);
+}

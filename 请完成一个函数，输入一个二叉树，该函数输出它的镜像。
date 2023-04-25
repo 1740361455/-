@@ -1,0 +1,16 @@
+void swap(struct TreeNode* root,struct TreeNode* tmp)
+{
+    if(root!=NULL&&(root->left!=NULL||root->right!=NULL))
+    {
+        tmp=root->left;
+        root->left=root->right;
+        root->right=tmp;
+        swap(root->left,tmp);
+        swap(root->right,tmp);
+    }
+}
+struct TreeNode* mirrorTree(struct TreeNode* root){
+    struct TreeNode* tmp=(struct TreeNode*)malloc(sizeof(struct TreeNode));
+    swap(root,tmp);
+    return root;
+}

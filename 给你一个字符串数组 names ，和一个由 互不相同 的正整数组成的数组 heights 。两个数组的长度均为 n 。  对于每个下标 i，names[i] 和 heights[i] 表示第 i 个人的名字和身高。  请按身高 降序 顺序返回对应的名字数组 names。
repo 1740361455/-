@@ -1,0 +1,20 @@
+char ** sortPeople(char ** names, int namesSize, int* heights, int heightsSize, int* returnSize){
+    char** res=(char**)malloc(sizeof(char*)*namesSize);
+    for(int i=0;i<heightsSize;i++)
+    {
+        int max=0;
+        int tmp=-1;
+        for(int j=0;j<heightsSize;j++)
+        {
+            if(max<heights[j])
+            {
+                max=heights[j];
+                tmp=j;
+            }
+        }
+        heights[tmp]=0;
+        res[i]=names[tmp];
+    }
+    *returnSize=namesSize;
+    return res;
+}

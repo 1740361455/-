@@ -1,0 +1,18 @@
+struct ListNode* removeDuplicateNodes(struct ListNode* head){
+    if(head==NULL||head->next==NULL)
+    return head;
+    int* arr=(int*)calloc(20001,sizeof(int));
+    struct ListNode* first=(struct ListNode*)calloc(1,sizeof(struct ListNode));
+    first->next=head;
+    while(first->next)
+    {
+        if(arr[first->next->val]==0)
+        {
+            arr[first->next->val]=1;
+            first=first->next;
+        }
+        else
+        first->next=first->next->next;
+    }
+    return head;
+}

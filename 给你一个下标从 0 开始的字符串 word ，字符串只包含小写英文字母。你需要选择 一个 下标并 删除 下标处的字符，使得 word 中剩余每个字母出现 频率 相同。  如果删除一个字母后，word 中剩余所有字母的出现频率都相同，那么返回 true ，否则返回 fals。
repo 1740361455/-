@@ -1,0 +1,44 @@
+int cmp(const void* e1,const void* e2)
+{
+    return *(int*)e1-*(int*)e2;
+}
+bool equalFrequency(char * word){
+    int sz=strlen(word);
+    int* letter=(int*)calloc(26,sizeof(int));
+    for(int i=0;i<sz;i++)
+    letter[word[i]-97]++;
+    qsort(letter,26,sizeof(int),cmp);
+    int j=0;
+    for(;j<26;j++)
+    if(letter[j]!=0)
+    break;
+    if(letter[j]==1&&letter[j+1]>1)
+    {
+        for(int i=j+1;i<25;i++)
+        if(letter[i]!=letter[i+1])
+        return false;
+        return true;
+    }
+    else if(letter[j]==1&&letter[j+1]==1)
+    {
+        for(int i=j+2;i<25;i++)
+        if(letter[i]!=1)
+        return false;
+        if(letter[25]==2||letter[25]==1)
+        return true;
+        else
+        return false;
+    }
+    else if(j==25)
+    return true;
+    else
+    {
+        for(int i=j;i<24;i++)
+        if(letter[i]!=letter[i+1])
+        return false;
+        if(letter[25]==letter[j]+1)
+        return true;
+        return false;
+    }
+    return ;
+}

@@ -1,0 +1,11 @@
+int cmp(const void* e1,const void* e2)
+{
+    return *(char*)e1-*(char*)e2;
+}
+bool CheckPermutation(char* s1, char* s2){
+    qsort(s1,strlen(s1),sizeof(char),cmp);
+    qsort(s2,strlen(s2),sizeof(char),cmp);
+    if(strcmp(s1,s2)==0)
+    return true;
+    return false;
+}

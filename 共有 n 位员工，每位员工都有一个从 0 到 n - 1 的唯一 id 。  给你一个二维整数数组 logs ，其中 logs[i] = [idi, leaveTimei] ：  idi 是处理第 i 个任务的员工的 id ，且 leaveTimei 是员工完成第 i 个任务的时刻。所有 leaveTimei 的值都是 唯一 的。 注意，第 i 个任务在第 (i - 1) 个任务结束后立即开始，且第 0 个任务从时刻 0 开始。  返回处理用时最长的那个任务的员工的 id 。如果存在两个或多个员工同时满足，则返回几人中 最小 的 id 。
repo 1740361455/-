@@ -1,0 +1,18 @@
+int hardestWorker(int n, int** logs, int logsSize, int* logsColSize){
+    int min=n;
+    int max=0;
+    int time=0;
+    for(int i=0;i<logsSize;i++)
+    {
+        int tmp=logs[i][1]-time;
+        if(max<tmp)
+        {
+            max=tmp;
+            min=logs[i][0];
+        }
+        if(max==tmp)
+        min=min>logs[i][0]?logs[i][0]:min;
+        time=logs[i][1];
+    }
+    return min;
+}
